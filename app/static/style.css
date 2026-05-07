@@ -465,6 +465,34 @@ button.danger:hover { background: var(--danger); color: #fff; }
 
 .review-notes textarea:focus { border-color: #999; }
 
+.scene-lock-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25em;
+}
+
+.lock-label {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #aaa;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+  white-space: nowrap;
+}
+
+.lock-label input[type="checkbox"] { cursor: pointer; accent-color: var(--accent); }
+
+.scene-locked {
+  border-left: 2px solid var(--accent);
+  padding-left: 0.6em;
+}
+
+.scene-locked .lock-label { color: var(--accent); }
+
 .review-submit {
   margin-top: 1.5em;
   text-align: right;

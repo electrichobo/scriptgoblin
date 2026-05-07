@@ -31,9 +31,15 @@
         {% if outputs.outline and outputs.outline.scenes %}
           <h2>Scene Notes</h2>
           {% for scene in outputs.outline.scenes %}
-            <div class="scene-note-block">
-              <label>{{ scene.number }}. {{ scene.location }} — {{ scene.time_of_day }}</label>
-              <textarea name="scene_note_{{ scene.number }}" rows="3">{{ scene_notes.get(scene.number, "") }}</textarea>
+            {% set sn = scene_notes.get(scene.number, {}) %}
+            <div class="scene-note-block{% if sn.get('locked', false) %} scene-locked{% endif %}">
+              <div class="scene-lock-row">
+                <label>{{ scene.number }}. {{ scene.location }} — {{ scene.time_of_day }}</label>
+                <label class="lock-label">
+                  <input type="checkbox" name="scene_lock_{{ scene.number }}"{% if sn.get('locked', false) %} checked{% endif %}> Lock
+                </label>
+              </div>
+              <textarea name="scene_note_{{ scene.number }}" rows="3">{{ sn.get('note', '') }}</textarea>
             </div>
           {% endfor %}
         {% endif %}

@@ -104,6 +104,7 @@ def run_project(slug: str):
             "brief": project["brief"],
             "outline": {},
             "draft": "",
+            "eval_result": {},
             "human_notes": project["notes"],
             "current_stage": "running",
             "story_loops": project["run_state"].get("story_loops", 0),
@@ -130,7 +131,7 @@ def review_page(request: Request, slug: str):
         raise HTTPException(status_code=404, detail="Project not found")
     outputs = get_latest_outputs(slug)
     scene_notes = {
-        sn["scene_number"]: sn["note"]
+        sn["scene_number"]: {"note": sn.get("note", ""), "locked": sn.get("locked", False)}
         for sn in project["notes"].get("scene_notes", [])
     }
     return templates.TemplateResponse(
@@ -155,10 +156,13 @@ async def review_submit(request: Request, slug: str):
 
     scene_notes = []
     for key, value in form_data.items():
-        if key.startswith("scene_note_") and str(value).strip():
+        if key.startswith("scene_note_"):
             try:
                 scene_num = int(key.replace("scene_note_", ""))
-                scene_notes.append({"scene_number": scene_num, "note": str(value).strip()})
+                note_text = str(value).strip()
+                locked = str(form_data.get(f"scene_lock_{scene_num}", "")) == "on"
+                if note_text or locked:
+                    scene_notes.append({"scene_number": scene_num, "note": note_text, "locked": locked})
             except ValueError:
                 pass
     scene_notes.sort(key=lambda x: x["scene_number"])

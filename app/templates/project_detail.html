@@ -28,7 +28,7 @@
   <div class="title-page__actions">
     <form method="post" action="/projects/{{ project.slug }}/run"
           onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').textContent='Generating…'">
-      <button type="submit">Generate Draft</button>
+      <button type="submit">{% if project.run_state.current_stage in ['drafted', 'evaluated', 'rewritten'] %}Generate Revision with Notes{% else %}Generate Draft{% endif %}</button>
     </form>
     <a href="/projects/{{ project.slug }}/review" class="btn">Production Notes</a>
     <form method="post" action="/projects/{{ project.slug }}/delete"
