@@ -31,7 +31,7 @@ def outline_node(state: ScreenplayState) -> dict:
         "  purpose: what this scene accomplishes in the story (one sentence)\n"
         "  objective: what the POV character wants in this scene (one sentence)\n"
         "  turning_point: how the scene ends differently than it began (one sentence)\n"
-        "  beats: 2–4 key story beats within the scene (short phrases)\n\n"
+        "  beats: 2-4 key story beats within the scene (short phrases)\n\n"
         f"Scale scene count to fit a {runtime}-minute runtime. "
         "Return structured output only — no prose outside the schema."
     )
@@ -40,18 +40,16 @@ def outline_node(state: ScreenplayState) -> dict:
     if story_notes:
         human += f"\n\nAdditional story notes (characters, existing story elements, specific requirements):\n{story_notes}"
 
-<<<<<<< HEAD
-    print(f"[outline] generating outline for '{brief['title']}' ({runtime} min)...")
-=======
->>>>>>> 0ef178a20b280c95a28333cd644dd0fded6043b8
+    production_notes = state.get("human_notes", {}).get("overall_notes", "").strip()
+    if production_notes:
+        human += f"\n\nProduction notes from previous draft — incorporate these into the new outline:\n{production_notes}"
+
+    print(f"[outline] generating for '{brief['title']}' ({runtime} min)...")
     llm = get_writer()
     result = parse_structured(
         llm,
         ScreenplayOutline,
         [SystemMessage(content=system), HumanMessage(content=human)],
     )
-<<<<<<< HEAD
     print(f"[outline] done — {len(result.scenes)} scenes")
-=======
->>>>>>> 0ef178a20b280c95a28333cd644dd0fded6043b8
     return {"outline": result.model_dump(), "current_stage": "outlined"}

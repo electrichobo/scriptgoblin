@@ -1,0 +1,76 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. COMPUTER ROOM - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason discovers a ghost in the shell feedback loop in her program.",
+      "objective": "Jason wants to identify and resolve the issue before it crashes the system.",
+      "turning_point": "Jason's initial frustration gives way to curiosity about the ghost concept.",
+      "beats": [
+        "Ghost discovered in shell",
+        "Frustration turns to fascination"
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. COMPUTER ROOM - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason researches the philosophical implications of a ghost in the machine.",
+      "objective": "Jason wants to better understand this concept and its potential applications.",
+      "turning_point": "Jason's focus shifts from troubleshooting to exploring the idea of artificial consciousness.",
+      "beats": [
+        "Ghost philosophy research",
+        "From bug to feature"
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. COFFEE SHOP - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason discusses ghost in the shell with a coworker.",
+      "objective": "Jason wants to validate her findings and get additional insights from an expert in the field.",
+      "turning_point": "Colleague dismisses Jason's curiosity, leaving her even more intrigued by the topic.",
+      "beats": [
+        "Coworker interaction",
+        "Ghost skepticism"
+      ]
+    },
+    {
+      "number": 4,
+      "location": "EXT. ABANDONED FACTORY - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason meets a hacker who explores this concept in her own projects.",
+      "objective": "Jason wants to learn more about the practical applications of ghost in the shell theory.",
+      "turning_point": "Hacker's projects demonstrate Jason's ideas can have real-world impact and utility.",
+      "beats": [
+        "Meeting with hacker",
+        "Real-world potential"
+      ]
+    },
+    {
+      "number": 5,
+      "location": "INT. JASON'S APARTMENT - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason reflects on her journey of discovery regarding ghost in the shell concept.",
+      "objective": "Jason wants to integrate this new perspective into her daily work and life.",
+      "turning_point": "Jason commits to exploring this idea further, seeing it as a path to innovation and creativity in coding.",
+      "beats": [
+        "Reflection",
+        "Future possibilities"
+      ]
+    },
+    {
+      "number": 6,
+      "location": "INT. COMPUTER ROOM - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason returns to fix the feedback loop issue she initially encountered.",
+      "objective": "Jason wants to demonstrate her newfound understanding and creatively apply ghost in the shell principles to resolve the problem.",
+      "turning_point": "Jason's solution, inspired by philosophical concepts, successfully resolves the issue with a novel approach.",
+      "beats": [
+        "Practical application",
+        "Ghost-influenced fix"
+      ]
+    }
+  ]
+}

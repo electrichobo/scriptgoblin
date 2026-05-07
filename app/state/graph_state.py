@@ -8,6 +8,7 @@ class ScreenplayState(TypedDict):
     brief: dict
     outline: dict   # ScreenplayOutline.model_dump() — {scenes: [...]}
     draft: str
+    human_notes: dict  # {overall_notes: str} — saved production notes, fed back into generation
     current_stage: str
     story_loops: int
     note_loops: int

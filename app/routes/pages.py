@@ -104,6 +104,7 @@ def run_project(slug: str):
             "brief": project["brief"],
             "outline": {},
             "draft": "",
+            "human_notes": project["notes"],
             "current_stage": "running",
             "story_loops": project["run_state"].get("story_loops", 0),
             "note_loops": project["run_state"].get("note_loops", 0),

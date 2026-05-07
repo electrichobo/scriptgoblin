@@ -16,17 +16,18 @@
 
   <div class="title-page__status">
     <div>Stage: {{ project.run_state.current_stage }}</div>
-    <div>Status: {{ project.run_state.status }}</div>
     <div>Story Loops: {{ project.run_state.story_loops }}</div>
+    {% if project.run_state.status == 'error' %}
+    <div style="color:#8b2020;">Error on last run — check the server log.</div>
+    {% endif %}
+    {% if project.notes.overall_notes %}
+    <div style="margin-top:0.5em; font-style:italic;">Production notes on file.</div>
+    {% endif %}
   </div>
 
   <div class="title-page__actions">
-<<<<<<< HEAD
     <form method="post" action="/projects/{{ project.slug }}/run"
           onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').textContent='Generating…'">
-=======
-    <form method="post" action="/projects/{{ project.slug }}/run">
->>>>>>> 0ef178a20b280c95a28333cd644dd0fded6043b8
       <button type="submit">Generate Draft</button>
     </form>
     <a href="/projects/{{ project.slug }}/review" class="btn">Production Notes</a>
