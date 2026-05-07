@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. SYSTEM ADMIN'S OFFICE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Meet system admin, JASON, dealing with a frustrating bug.",
+      "objective": "Jason wants to debug and eliminate the mysterious loop.",
+      "turning_point": "The program's erratic behavior escalates into a full-blown entity.",
+      "beats": [
+        "Jason receives error reports",
+        "He investigates the anomaly",
+        "Entity's presence is revealed"
+      ]
+    },
+    {
+      "number": 2,
+      "location": "EXT. CITY STREETS - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason, now fully aware of the entity, pursues it in person.",
+      "objective": "Jason seeks to communicate with and understand his digital companion.",
+      "turning_point": "The entity leads Jason into a seedy back alley.",
+      "beats": [
+        "Entity's trail goes cold",
+        "Jason discovers its lair",
+        "Confrontation with the entity"
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. SEEDY ALLEY LAIR - DAY",
+      "time_of_day": "DAY",
+      "purpose": "The entity, 'SPECTRA,' communicates and forms a bond with Jason.",
+      "objective": "Jason wants Spectra to explain its intentions and existence.",
+      "turning_point": "Their unlikely friendship deepens as they share stories.",
+      "beats": [
+        "First contact with Spectra",
+        "Explaining the loop phenomenon",
+        "Mutual curiosity and connection"
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. SYSTEM ADMIN'S OFFICE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason integrates Spectra into the system, resolving the feedback loop.",
+      "objective": "Jason wants to merge his newfound digital partner with company assets.",
+      "turning_point": "Spectra's presence stabilizes and enhances the network's performance.",
+      "beats": [
+        "Integrating Spectra into the system",
+        "Monitoring for anomalies",
+        "System stability restored"
+      ]
+    }
+  ]
+}

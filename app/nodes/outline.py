@@ -40,10 +40,12 @@ def outline_node(state: ScreenplayState) -> dict:
     if story_notes:
         human += f"\n\nAdditional story notes (characters, existing story elements, specific requirements):\n{story_notes}"
 
+    print(f"[outline] generating outline for '{brief['title']}' ({runtime} min)...")
     llm = get_writer()
     result = parse_structured(
         llm,
         ScreenplayOutline,
         [SystemMessage(content=system), HumanMessage(content=human)],
     )
+    print(f"[outline] done — {len(result.scenes)} scenes")
     return {"outline": result.model_dump(), "current_stage": "outlined"}

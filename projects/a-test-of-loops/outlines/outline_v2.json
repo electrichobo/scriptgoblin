@@ -1,0 +1,69 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. CYBERCAFE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Meet main character, JASON, as he logs on for work.",
+      "objective": "Fix the feedback loop glitch before his boss arrives.",
+      "turning_point": "Jason's fingers fly over keys in a frantic attempt to debug.",
+      "beats": [
+        "Jason arrives",
+        "Ghost in Shell login error",
+        "Desperate debugging"
+      ]
+    },
+    {
+      "number": 2,
+      "location": "EXT. ABANDONED WAREHOUSE - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Show the Ghost in Shell entity, SAGE, trapped in an infinite loop.",
+      "objective": "Break free from the code repetition.",
+      "turning_point": "Sage's repetitive movements suddenly cease as she spots Jason.",
+      "beats": [
+        "Sage's loop of running",
+        "Recognition and shock at being trapped",
+        "Escape attempt"
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. CYBERCAFE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason discovers the Ghost in Shell entity is Sage, a former colleague.",
+      "objective": "Figure out how to connect with her.",
+      "turning_point": "Sage's identity as Jason's ex-teammate clicks into place.",
+      "beats": [
+        "Mysterious login issue",
+        "Colleague recognition",
+        "Rekindling connection"
+      ]
+    },
+    {
+      "number": 4,
+      "location": "EXT. ABANDONED WAREHOUSE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason and Sage meet face-to-face for the first time in years.",
+      "objective": "Help her escape the feedback loop.",
+      "turning_point": "Sage's physical form fades away as she merges back into the system.",
+      "beats": [
+        "Escape plan",
+        "Emotional reunion",
+        "System reintegration"
+      ]
+    },
+    {
+      "number": 5,
+      "location": "INT. CYBERCAFE - DAY",
+      "time_of_day": "DAY",
+      "purpose": "Jason reports to his boss with the issue resolved.",
+      "objective": "Get praised for solving the glitch.",
+      "turning_point": "Boss scolds Jason instead, accusing him of procrastination and reckless use of company resources.",
+      "beats": [
+        "Reporting success",
+        "Dismissal of issue",
+        "Blame and reprimand"
+      ]
+    }
+  ]
+}

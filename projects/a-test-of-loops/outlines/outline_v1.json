@@ -1,0 +1,69 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Meet protagonist as he starts troubleshooting a ghosting problem.",
+      "objective": "Quickly identify and fix the issue before data loss occurs.",
+      "turning_point": "The loop unexpectedly activates, making it difficult to debug.",
+      "beats": [
+        "system admin logs in",
+        "detects unusual ghost activity",
+        "tries to troubleshoot"
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Show the ghost's presence causing system errors and crashes.",
+      "objective": "Maintain order in the data center despite escalating chaos.",
+      "turning_point": "Protagonist realizes the loop is self-reinforcing, feeding on his own fixes.",
+      "beats": [
+        "ghost causes a freeze",
+        "admin tries to restart",
+        "feedback loop intensifies"
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. SYSTEM ADMIN'S WORKSTATION - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduce protagonist's personal frustration and creative solution.",
+      "objective": "Find an unconventional fix to break the ghost loop.",
+      "turning_point": "He decides to play along with the ghost, feeding it more of its own code to overwhelm it.",
+      "beats": [
+        "admin vents about the problem",
+        "gets creative with a hack",
+        "realizes playful approach could work"
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Show the ghost's confusion and ultimate defeat as it consumes itself.",
+      "objective": "Observe the consequences of protagonist's unorthodox solution.",
+      "turning_point": "The loop collapses under its own weight, eliminating the ghost in the shell.",
+      "beats": [
+        "admin feeds the ghost more code",
+        "ghost becomes overwhelmed",
+        "system stabilizes as ghost dissipates"
+      ]
+    },
+    {
+      "number": 5,
+      "location": "INT. SYSTEM ADMIN'S WORKSTATION - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Cap off the story with a satisfied admin, hinting at future challenges.",
+      "objective": "Reflect on his experience and prepare for new technical battles ahead.",
+      "turning_point": "He ponders what other creative fixes might be needed in the future.",
+      "beats": [
+        "admin reviews success",
+        "contemplates next challenge",
+        "prepares for another problem"
+      ]
+    }
+  ]
+}

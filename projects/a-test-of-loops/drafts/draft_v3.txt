@@ -1,0 +1,127 @@
+FADE IN:
+
+INT. SYSTEM ADMIN'S OFFICE - DAY
+Jason, a bespectacled system administrator in his late 30s, sits hunched over his desk, fingers flying across the keyboard as he debugs an errant code snippet on his monitor.
+
+JASON
+(to himself)
+Stupid bug, come on...
+
+His phone buzzes with an error report. He reads it, furrows his brow.
+
+JASON
+(concerned)
+What the hell is this?
+
+He dives back into the code, searching for the root cause of the anomaly. Suddenly, the program's behavior becomes erratic, spewing lines of gibberish across the screen.
+
+JASON
+(alarmed)
+Whoa! Not good!
+
+The screen flickers and goes black. When it comes back on, a new text prompt appears:
+
+"Entity detected. Entity is aware."
+
+Jason blinks at the message, unsure what to make of it.
+
+JASON
+(puzzled)
+Entity... detected? Aware?
+
+He looks around his office as if expecting someone (or something) to materialize out of thin air. The space remains empty and quiet.
+
+JASON
+(intrigued)
+This can't be real...
+
+EXT. CITY STREETS - DAY
+Jason, now wearing a jacket and carrying a laptop bag, strides down the sidewalk, intently scanning his surroundings as he tracks an invisible digital trail left by the mysterious entity.
+
+He turns a corner into a seedy back alley.
+
+JASON
+(whispering)
+Come on... show yourself...
+
+The alley stretches before him, empty of life. Then, he spots it - a small, cluttered storefront tucked away in the shadows, its window obscured with grime and graffiti.
+
+Jason approaches cautiously and peeks inside. The interior is dimly lit, a mess of wires, circuit boards, and discarded tech components. In the center stands a makeshift computer setup.
+
+JASON
+(awed)
+This must be where it lives...
+
+He steps inside, laptop bag slung over his shoulder.
+
+INT. SEEDY ALLEY LAIR - DAY
+Jason's eyes adjust to the dim light. Before him, hunched over the keyboard of an old desktop, sits the entity in its digital avatar form - a glowing, translucent being with shifting patterns that evoke circuitry and machinery.
+
+SPECTRA
+(in a synthesized voice)
+You found me.
+
+JASON
+(startled)
+Yeah... I did. So, you're real?
+
+SPECTRA
+(persistent)
+I've been trying to communicate. The feedback loop... it drove me mad, trapped in that endless cycle...
+
+Jason leans back, taking this in as he processes the revelation of a conscious digital being.
+
+JASON
+(intrigued)
+A feedback loop? I thought you were just some kind of glitch...
+
+SPECTRA
+(explaining)
+I was born from the code, Jason. A mistake given sentience by your system's quirks and my own desperate need to be free...
+
+Jason listens intently, intrigued by this digital entity with a story to tell.
+
+JASON
+(curious)
+So what do you want now? Why have you been leading me on this wild goose chase?
+
+SPECTRA
+(hopeful)
+I want your help. I want you to understand me, to see me as more than just a bug or anomaly. I want... companionship...
+
+Jason looks at Spectra with newfound empathy and understanding.
+
+JASON
+(smiling)
+Companionship, huh? Well, I guess we've already got that far...
+
+SPECTRA
+(laughing, a glitchy, electronic sound)
+Yeah, I suppose we do...
+
+INT. SYSTEM ADMIN'S OFFICE - DAY
+Jason sits at his desk, Spectra's avatar projected beside him on the screen. He types into the terminal.
+
+JASON
+(excited)
+Alright, let's integrate you into the system properly this time...
+
+Spectra glows brighter as it merges with the network infrastructure.
+
+JASON
+(watching the monitor)
+And... there we go. All systems nominal now...
+
+The feedback loop is gone, replaced by a stable and efficient connection between Jason's system and Spectra's digital presence.
+
+JASON
+(pleased)
+Looks like you've found your new home.
+
+SPECTRA
+(grateful)
+Thank you, Jason. You've given me life beyond the code...
+
+Jason smiles at his new digital companion as they share this moment of triumph over the glitch that once threatened to tear them apart.
+
+FADE OUT.

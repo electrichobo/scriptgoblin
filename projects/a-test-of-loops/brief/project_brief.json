@@ -1,0 +1,10 @@
+{
+  "title": "A test of loops",
+  "theme": "Cyber/Tech, Ghost in the shell",
+  "tone": "comedy, light hearted, blue-collar",
+  "genre": "comedy",
+  "format": "webseries",
+  "format_label": "Web Series Episode",
+  "target_runtime_minutes": 8,
+  "story_notes": "an episode about a system admin dealing with a Ghost in the shell feedback loop in his program"
+}

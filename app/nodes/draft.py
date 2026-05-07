@@ -47,8 +47,10 @@ def draft_node(state: ScreenplayState) -> dict:
     if story_notes:
         human += f"\n\nAdditional story notes:\n{story_notes}"
 
+    print(f"[draft] generating draft for '{brief['title']}' ({runtime} min, {len(state['outline'].get('scenes', []))} scenes)...")
     llm = get_writer()
     response = llm.invoke([SystemMessage(content=system), HumanMessage(content=human)])
+    print(f"[draft] done — {len(response.content)} chars")
     return {
         "draft": response.content,
         "current_stage": "drafted",
