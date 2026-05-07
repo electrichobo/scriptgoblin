@@ -1,23 +1,90 @@
-<!-- E:\Script Goblin\app\templates\project_detail.html -->
 {% extends "base.html" %}
-
-{% block title %}Project - Script Goblin{% endblock %}
-
+{% block title %}{{ project.brief.title }} — Script Goblin{% endblock %}
 {% block content %}
-<h1>{{ project.brief.title }}</h1>
 
-<h2>Brief</h2>
-<p><strong>Theme:</strong> {{ project.brief.theme }}</p>
-<p><strong>Tone:</strong> {{ project.brief.tone }}</p>
-<p><strong>Genre:</strong> {{ project.brief.genre }}</p>
+<!-- Title Page -->
+<div class="page title-page">
 
-<h2>Run State</h2>
-<p><strong>Status:</strong> {{ project.run_state.status }}</p>
-<p><strong>Current Stage:</strong> {{ project.run_state.current_stage }}</p>
-<p><strong>Story Loops:</strong> {{ project.run_state.story_loops }}</p>
-<p><strong>Note Loops:</strong> {{ project.run_state.note_loops }}</p>
+  <div class="title-page__top">
+    <div class="title-page__title">{{ project.brief.title }}</div>
+    <div class="title-page__byline">Written by</div>
+    <div class="title-page__byline">Script Goblin</div>
+    <div class="title-page__meta">
+      {{ project.brief.genre }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ project.brief.format_label }}&nbsp;&nbsp;|&nbsp;&nbsp;{{ project.brief.target_runtime_minutes }} min
+    </div>
+  </div>
 
-<p>
-  <a href="/projects/{{ project.slug }}/review">Open Human Review</a>
-</p>
+  <div class="title-page__status">
+    <div>Stage: {{ project.run_state.current_stage }}</div>
+    <div>Status: {{ project.run_state.status }}</div>
+    <div>Story Loops: {{ project.run_state.story_loops }}</div>
+  </div>
+
+  <div class="title-page__actions">
+    <form method="post" action="/projects/{{ project.slug }}/run">
+      <button type="submit">Generate Draft</button>
+    </form>
+    <a href="/projects/{{ project.slug }}/review" class="btn">Production Notes</a>
+    <form method="post" action="/projects/{{ project.slug }}/delete"
+          onsubmit="return confirm('Permanently delete {{ project.brief.title }}? This cannot be undone.')">
+      <button type="submit" class="danger">Delete Project</button>
+    </form>
+  </div>
+
+  <div class="title-page__bottom">
+    <div>Theme: {{ project.brief.theme }}</div>
+    <div>Tone: {{ project.brief.tone }}</div>
+    {% if project.brief.story_notes %}
+    <div style="margin-top:0.5em;">Story Notes: {{ project.brief.story_notes }}</div>
+    {% endif %}
+  </div>
+
+</div>
+
+<!-- Sequence Outline -->
+{% if outputs.outline and outputs.outline.scenes %}
+<div class="page">
+  <div class="outline-header">Sequence Outline</div>
+  {% for scene in outputs.outline.scenes %}
+  <div class="scene-card">
+    <div class="scene-card__heading">
+      <span class="scene-card__number">{{ scene.number }}.</span>
+      {{ scene.location }} &mdash; {{ scene.time_of_day }}
+    </div>
+    <div class="scene-card__row">
+      <span class="scene-card__label">Purpose</span>
+      <span>{{ scene.purpose }}</span>
+    </div>
+    <div class="scene-card__row">
+      <span class="scene-card__label">Objective</span>
+      <span>{{ scene.objective }}</span>
+    </div>
+    <div class="scene-card__row">
+      <span class="scene-card__label">Turning Point</span>
+      <span>{{ scene.turning_point }}</span>
+    </div>
+    {% if scene.beats %}
+    <div class="scene-card__row">
+      <span class="scene-card__label">Beats</span>
+      <ul class="scene-card__beats">
+        {% for beat in scene.beats %}
+          <li>{{ beat }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<!-- Draft Script -->
+{% if outputs.draft %}
+<div class="page">
+  <div class="screenplay-script">
+    {{ outputs.draft | screenplay }}
+  </div>
+</div>
+{% endif %}
+
 {% endblock %}

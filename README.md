@@ -31,6 +31,7 @@ Script Goblin is being developed on the main PC, with model inference handled re
 - Ollama runs on the Unraid server
 - The project connects to Ollama over the network
 - Available models are already confirmed through the `/api/tags` endpoint
+- Ollama connectivity is checked live on the dashboard
 
 ### Working approach
 
@@ -49,13 +50,15 @@ The following work is already complete:
 - The remote Ollama server has been verified as reachable from the main PC.
 - Available Ollama models have been confirmed.
 - The web app direction has been chosen: FastAPI + Jinja templates.
-- Initial HTML template files have been created.
-- The first backend web files have been drafted.
-- The project structure now includes folders for:
-  - `app`
-  - `projects`
-  - `tests`
-  - `scratch`
+- The full web shell is complete and running: dashboard, project creation, project detail, and human review pages.
+- Project management is complete: create, view, delete projects; store briefs and notes as JSON files.
+- The LangGraph pipeline is partially built: outline node and draft node are implemented and confirmed working end-to-end.
+- The outline produces structured scene cards (purpose, objective, turning point, beats) rendered as a sequence outline.
+- The draft is rendered in the browser with proper screenplay formatting (scene headings, action, character, dialogue, parenthetical, transitions).
+- The human review page has been redesigned: two-column layout with the formatted script on the left and overall notes + per-scene margin notes on the right.
+- Script format and runtime selection are implemented: Short, Feature, TV Hour, TV Half-Hour, Advert, Web Series, and Custom.
+- A Story Notes field allows specifying characters, an existing story shell, or other specific requirements at project creation.
+- Static file serving is in place; the app has a screenplay-aesthetic visual design (dark shell, white paper pages, Courier typeface).
 
 ## What the app will become
 
@@ -79,26 +82,49 @@ The app will stay intentionally simple in the interface and practical in the wor
 
 - FastAPI web server
 - Jinja2 templates
-- Plain HTML first
-- CSS and JS later only if needed
+- Plain HTML with a screenplay-aesthetic CSS layer (`app/static/style.css`)
+- Minimal inline JS only where necessary (format selector toggle, delete confirmation)
 
 ### Backend
 
 - LangGraph for workflow orchestration
-- State-driven node graph
-- Interrupt/resume support for human review
-- Structured outputs for tagging and verification
+- State-driven node graph (`ScreenplayState` TypedDict)
+- Interrupt/resume support for human review (planned — Phase 4)
+- Structured outputs for outline (Pydantic models via `with_structured_output`)
 
 ### Model layer
 
-- Ollama on Unraid, 192.168.1.169:11434
+- Ollama on Unraid, `192.168.1.169:11434`
 - Remote HTTP access from the main PC
-- Model selection by environment variables
+- Model selection by environment variable (set in `.env`)
+- Connectivity checked live on dashboard load
 
 ### Storage
 
 - Local project folders under `E:\Script Goblin\projects`
-- JSON files for briefs, notes, run state, tags, and outputs
+- JSON files for briefs, run state, outline (structured), and notes
+- Plain text files for draft versions
+
+### Key modules
+
+| Path | Purpose |
+|---|---|
+| `app/web.py` | FastAPI app entry point, static file mount |
+| `app/config.py` | Env var loading (Ollama URL, model names) |
+| `app/routes/pages.py` | All web routes |
+| `app/services/project_store.py` | Project CRUD, file I/O, format presets |
+| `app/state/graph_state.py` | `ScreenplayState` TypedDict |
+| `app/state/models.py` | Pydantic models: `ScreenplayOutline`, `StoryEval`, `SceneTags`, `VerifyReport` |
+| `app/llm/ollama_client.py` | `ChatOllama` factory, Ollama connectivity check |
+| `app/llm/model_router.py` | Role-based model selection (writer, tagger, verifier) |
+| `app/llm/structured_output.py` | `parse_structured()` helper |
+| `app/graphs/screenplay_graph.py` | LangGraph graph builder |
+| `app/nodes/outline.py` | Generates structured scene outline |
+| `app/nodes/draft.py` | Generates screenplay draft from outline |
+| `app/utils/screenplay_parser.py` | Converts raw screenplay text to formatted HTML |
+| `app/prompts/` | System prompt files per role |
+| `app/templates/` | Jinja2 HTML templates |
+| `app/static/style.css` | App and screenplay CSS |
 
 ## Planned model usage
 
@@ -122,47 +148,42 @@ Planned usage:
 
 ## Roadmap
 
-## Phase 1: Basic web shell
+## Phase 1: Basic web shell — COMPLETE
 
 Goal: get the app booting cleanly in the browser.
 
-Tasks:
+- FastAPI entrypoint, route handlers, and templates all working.
+- Project creation, listing, and detail pages confirmed functional.
 
-- finish the FastAPI entrypoint,
-- finish the route handlers,
-- confirm templates render,
-- confirm project creation works,
-- confirm project detail pages load.
-
-## Phase 2: Project management
+## Phase 2: Project management — COMPLETE
 
 Goal: make the app useful before any LangGraph logic is added.
 
-Tasks:
+- Create new projects from the UI with brief, theme, tone, genre, format, runtime, and story notes.
+- Store project briefs as JSON.
+- List existing projects on the dashboard with live Ollama status.
+- View project detail as a screenplay title page.
+- Store and display human review notes.
+- Delete projects.
 
-- create new projects from the UI,
-- store project briefs,
-- list existing projects,
-- view project status,
-- store human review notes.
-
-## Phase 3: LangGraph backend
+## Phase 3: LangGraph backend — IN PROGRESS
 
 Goal: turn Script Goblin into a real workflow engine.
 
-Tasks:
+Done:
+- Graph state (`ScreenplayState`)
+- Outline node (structured scene cards: purpose, objective, turning point, beats)
+- Draft node (full screenplay from outline)
+- Confirmed end-to-end: brief → outline → draft → saved → displayed
 
-- define graph state,
-- define node schemas,
-- build the outline node,
-- build the draft node,
-- build the story evaluation node,
-- build the rewrite loop,
-- build the scene tag node,
-- build the human review interrupt,
-- build the note application node,
-- build the verification node,
-- build the export node.
+Remaining:
+- Story evaluation node
+- Rewrite loop (conditional edge based on eval score)
+- Scene tag node
+- Human review interrupt (LangGraph interrupt/resume)
+- Note application node
+- Verification node
+- Export node
 
 ## Phase 4: Human-in-the-loop workflow
 
@@ -194,8 +215,6 @@ Goal: improve the experience once the core workflow is stable.
 
 Tasks:
 
-- better layout and styling,
-- more readable status indicators,
 - revision history views,
 - diff views,
 - export download buttons,
@@ -203,13 +222,14 @@ Tasks:
 
 ## Immediate next steps
 
-The next steps are:
+The next step is finishing Phase 3 with a thin slice of the evaluation and rewrite loop:
 
-1. Fix the current FastAPI/Jinja wiring.
-2. Confirm the home page loads without errors.
-3. Confirm project creation works.
-4. Confirm project detail pages load.
-5. Add the LangGraph graph after the web shell is stable.
+1. Build `story_eval` node — calls verifier model, returns `StoryEval` (score, feedback, `should_rewrite`).
+2. Build `rewrite` node — applies eval feedback to the draft.
+3. Add conditional edge after `story_eval`: if `should_rewrite` and loops < cap, route to rewrite; otherwise continue.
+4. Wire updated graph: `draft → story_eval → (rewrite → story_eval)* → END`.
+
+After the eval loop is stable, proceed to scene tagging and then the human review interrupt.
 
 ## Checklist
 
@@ -223,21 +243,30 @@ The next steps are:
 
 ### Web shell
 
-- [ ] Create `app\web.py`
-- [ ] Create `app\routes\pages.py`
-- [ ] Create `app\services\project_store.py`
+- [x] Create `app\web.py`
+- [x] Create `app\routes\pages.py`
+- [x] Create `app\services\project_store.py`
 - [x] Create template files
-- [ ] Confirm `python -m uvicorn app.web:app --reload` starts without errors
-- [ ] Confirm `/` loads in browser
-- [ ] Confirm `/projects/new` works
-- [ ] Confirm project folder creation works
+- [x] Confirm `python -m uvicorn app.web:app --reload` starts without errors
+- [x] Confirm `/` loads in browser
+- [x] Confirm `/projects/new` works
+- [x] Confirm project folder creation works
+
+### Project management
+
+- [x] Create new projects from the UI
+- [x] Store project briefs (title, theme, tone, genre, format, runtime, story notes)
+- [x] List existing projects on dashboard
+- [x] View project status
+- [x] Store human review notes (structured: overall + per-scene)
+- [x] Delete projects
 
 ### LangGraph backend
 
-- [ ] Create graph state model
-- [ ] Create screenplay graph file
-- [ ] Create outline node
-- [ ] Create draft node
+- [x] Create graph state model (`ScreenplayState`)
+- [x] Create screenplay graph file
+- [x] Create outline node (structured scene cards)
+- [x] Create draft node
 - [ ] Create evaluation node
 - [ ] Create rewrite loop
 - [ ] Create scene tag node
@@ -265,3 +294,5 @@ Keep it simple. Build one thin vertical slice at a time. If a step is not needed
 ## Notes
 
 This project is intentionally local-first, file-based, and workflow-driven. The goal is clarity, reliability, and a low-friction creative process.
+
+Ollama is fully stateless — it stores no per-project data between calls. Project deletion removes only the local project folder. Once LangGraph checkpointing is added (Phase 4), thread state will also need to be cleared on delete.

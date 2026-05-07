@@ -1,20 +1,50 @@
-<!-- E:\Script Goblin\app\templates\project_review.html -->
 {% extends "base.html" %}
-
-{% block title %}Human Review - Script Goblin{% endblock %}
-
+{% block title %}Production Notes — {{ project.brief.title }} — Script Goblin{% endblock %}
 {% block content %}
-<h1>Human Review: {{ project.brief.title }}</h1>
 
-<p>Paste structured JSON notes below.</p>
+<div class="page review-page">
+  <form method="post">
+    <div class="review-layout">
 
-<form method="post">
-  <p>
-    <label>Notes JSON<br>
-      <textarea name="notes_json" rows="18" cols="100">{% if project.notes %}{{ project.notes | tojson(indent=2) }}{% else %}{"notes": []}{% endif %}</textarea>
-    </label>
-  </p>
+      <!-- Script column -->
+      <div class="review-script">
+        <div class="outline-header">{{ project.brief.title }}</div>
+        {% if outputs.draft %}
+          <div class="screenplay-script">
+            {{ outputs.draft | screenplay }}
+          </div>
+        {% else %}
+          <p style="font-family:'Courier New',monospace; font-size:11pt; color:#999;">
+            No draft generated yet. Generate a draft first.
+          </p>
+        {% endif %}
+      </div>
 
-  <button type="submit">Save Notes</button>
-</form>
+      <!-- Notes column -->
+      <div class="review-notes">
+
+        <h2>Overall Notes</h2>
+        <div class="scene-note-block">
+          <textarea name="overall_notes" rows="7">{{ project.notes.overall_notes or "" }}</textarea>
+        </div>
+
+        {% if outputs.outline and outputs.outline.scenes %}
+          <h2>Scene Notes</h2>
+          {% for scene in outputs.outline.scenes %}
+            <div class="scene-note-block">
+              <label>{{ scene.number }}. {{ scene.location }} — {{ scene.time_of_day }}</label>
+              <textarea name="scene_note_{{ scene.number }}" rows="3">{{ scene_notes.get(scene.number, "") }}</textarea>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <div class="review-submit">
+          <button type="submit">Save Notes</button>
+        </div>
+
+      </div>
+    </div>
+  </form>
+</div>
+
 {% endblock %}
