@@ -1,0 +1,1 @@
+Extract scene tags as strict JSON.

@@ -1,0 +1,7 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "script_goblin": "app.graphs.screenplay_graph:build_graph"
+  },
+  "env": ".env"
+}

@@ -1,0 +1,23 @@
+<!-- E:\Script Goblin\app\templates\project_detail.html -->
+{% extends "base.html" %}
+
+{% block title %}Project - Script Goblin{% endblock %}
+
+{% block content %}
+<h1>{{ project.brief.title }}</h1>
+
+<h2>Brief</h2>
+<p><strong>Theme:</strong> {{ project.brief.theme }}</p>
+<p><strong>Tone:</strong> {{ project.brief.tone }}</p>
+<p><strong>Genre:</strong> {{ project.brief.genre }}</p>
+
+<h2>Run State</h2>
+<p><strong>Status:</strong> {{ project.run_state.status }}</p>
+<p><strong>Current Stage:</strong> {{ project.run_state.current_stage }}</p>
+<p><strong>Story Loops:</strong> {{ project.run_state.story_loops }}</p>
+<p><strong>Note Loops:</strong> {{ project.run_state.note_loops }}</p>
+
+<p>
+  <a href="/projects/{{ project.slug }}/review">Open Human Review</a>
+</p>
+{% endblock %}

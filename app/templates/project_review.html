@@ -1,0 +1,20 @@
+<!-- E:\Script Goblin\app\templates\project_review.html -->
+{% extends "base.html" %}
+
+{% block title %}Human Review - Script Goblin{% endblock %}
+
+{% block content %}
+<h1>Human Review: {{ project.brief.title }}</h1>
+
+<p>Paste structured JSON notes below.</p>
+
+<form method="post">
+  <p>
+    <label>Notes JSON<br>
+      <textarea name="notes_json" rows="18" cols="100">{% if project.notes %}{{ project.notes | tojson(indent=2) }}{% else %}{"notes": []}{% endif %}</textarea>
+    </label>
+  </p>
+
+  <button type="submit">Save Notes</button>
+</form>
+{% endblock %}

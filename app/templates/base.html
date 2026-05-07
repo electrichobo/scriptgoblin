@@ -1,0 +1,20 @@
+<!-- E:\Script Goblin\app\templates\base.html -->
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Script Goblin{% endblock %}</title>
+</head>
+<body>
+  <nav>
+    <a href="/">Dashboard</a> |
+    <a href="/projects">Projects</a> |
+    <a href="/projects/new">New Project</a>
+  </nav>
+  <hr>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

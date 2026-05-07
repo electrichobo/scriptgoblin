@@ -1,0 +1,36 @@
+<!-- E:\Script Goblin\app\templates\project_new.html -->
+{% extends "base.html" %}
+
+{% block title %}New Project - Script Goblin{% endblock %}
+
+{% block content %}
+<h1>New Project</h1>
+
+<form method="post">
+  <p>
+    <label>Title<br>
+      <input type="text" name="title" required>
+    </label>
+  </p>
+
+  <p>
+    <label>Theme<br>
+      <textarea name="theme" rows="4" required></textarea>
+    </label>
+  </p>
+
+  <p>
+    <label>Tone<br>
+      <textarea name="tone" rows="4" required></textarea>
+    </label>
+  </p>
+
+  <p>
+    <label>Genre<br>
+      <input type="text" name="genre" required>
+    </label>
+  </p>
+
+  <button type="submit">Create Project</button>
+</form>
+{% endblock %}	
