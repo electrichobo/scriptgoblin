@@ -21,8 +21,12 @@
   </div>
 
   <div class="title-page__actions">
+<<<<<<< HEAD
     <form method="post" action="/projects/{{ project.slug }}/run"
           onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').textContent='Generating…'">
+=======
+    <form method="post" action="/projects/{{ project.slug }}/run">
+>>>>>>> 0ef178a20b280c95a28333cd644dd0fded6043b8
       <button type="submit">Generate Draft</button>
     </form>
     <a href="/projects/{{ project.slug }}/review" class="btn">Production Notes</a>
