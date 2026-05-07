@@ -1,36 +1,68 @@
-<!-- E:\Script Goblin\app\templates\project_new.html -->
 {% extends "base.html" %}
-
-{% block title %}New Project - Script Goblin{% endblock %}
-
+{% block title %}New Project — Script Goblin{% endblock %}
 {% block content %}
-<h1>New Project</h1>
+<div class="page">
+  <form method="post" class="title-page-form">
 
-<form method="post">
-  <p>
-    <label>Title<br>
-      <input type="text" name="title" required>
-    </label>
-  </p>
+    <div class="title-page-form__top">
+      <div>
+        <label class="form-label">Title</label>
+        <input class="title-input" type="text" name="title" required
+               placeholder="THE TITLE OF YOUR SCREENPLAY">
+      </div>
+      <div class="title-page-form__byline">
+        Written by<br>Script Goblin
+      </div>
+      <div class="form-row">
+        <div class="form-field">
+          <label class="form-label">Genre</label>
+          <input type="text" name="genre" required>
+        </div>
+        <div class="form-field">
+          <label class="form-label">Format</label>
+          <select name="format" onchange="toggleCustomRuntime(this.value)">
+            <option value="short">Short Film (&lt;19 min)</option>
+            <option value="feature">Feature Film (~100 min)</option>
+            <option value="tv_hour">TV Hour (~45 min)</option>
+            <option value="tv_half">TV Half-Hour (~24 min)</option>
+            <option value="advert">Advert / Commercial (&lt;2 min)</option>
+            <option value="webseries">Web Series Episode (~8 min)</option>
+            <option value="custom">Custom Runtime</option>
+          </select>
+        </div>
+        <div class="form-field custom-runtime-field" id="custom-runtime-field">
+          <label class="form-label">Runtime (minutes)</label>
+          <input type="number" name="custom_runtime_minutes" min="1" max="999">
+        </div>
+      </div>
+    </div>
 
-  <p>
-    <label>Theme<br>
-      <textarea name="theme" rows="4" required></textarea>
-    </label>
-  </p>
+    <div class="title-page-form__bottom">
+      <div>
+        <label class="form-label">Theme</label>
+        <textarea name="theme" rows="3" required></textarea>
+      </div>
+      <div>
+        <label class="form-label">Tone</label>
+        <textarea name="tone" rows="3" required></textarea>
+      </div>
+      <div>
+        <label class="form-label">Story Notes</label>
+        <textarea name="story_notes" rows="5"
+          placeholder="Characters, existing story shell, specific scenes, dialogue you want included, or any other details you want the writer to know."></textarea>
+      </div>
+      <div class="title-page-form__submit">
+        <button type="submit">Create Project</button>
+      </div>
+    </div>
 
-  <p>
-    <label>Tone<br>
-      <textarea name="tone" rows="4" required></textarea>
-    </label>
-  </p>
+  </form>
+</div>
 
-  <p>
-    <label>Genre<br>
-      <input type="text" name="genre" required>
-    </label>
-  </p>
-
-  <button type="submit">Create Project</button>
-</form>
-{% endblock %}	
+<script>
+function toggleCustomRuntime(val) {
+  document.getElementById('custom-runtime-field').style.display =
+    val === 'custom' ? 'flex' : 'none';
+}
+</script>
+{% endblock %}

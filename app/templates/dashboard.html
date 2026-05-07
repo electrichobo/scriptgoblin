@@ -1,23 +1,27 @@
-<!-- E:\Script Goblin\app\templates\dashboard.html -->
 {% extends "base.html" %}
-
-{% block title %}Dashboard - Script Goblin{% endblock %}
-
+{% block title %}Dashboard — Script Goblin{% endblock %}
 {% block content %}
-<h1>Script Goblin</h1>
-<p>Local-first screenplay workflow with LangGraph and Ollama.</p>
+<div class="dashboard">
+  <h1>Script Goblin</h1>
 
-<h2>Projects</h2>
+  <div class="ollama-status {{ 'online' if ollama.reachable else 'offline' }}">
+    <span class="dot"></span>
+    <span class="label">Ollama {{ 'Online' if ollama.reachable else 'Offline' }}</span>
+    <span class="url">— {{ ollama.url }}</span>
+    <span class="hint">(OLLAMA_BASE_URL in .env)</span>
+  </div>
 
-{% if projects %}
-  <ul>
-    {% for project in projects %}
-      <li>
-        <a href="/projects/{{ project.slug }}">{{ project.slug }}</a>
-      </li>
-    {% endfor %}
-  </ul>
-{% else %}
-  <p>No projects yet.</p>
-{% endif %}
+  {% if projects %}
+    <ul class="project-list">
+      {% for project in projects %}
+        <li>
+          <a href="/projects/{{ project.slug }}">{{ project.state.title or project.slug }}</a>
+          <span class="project-meta">{{ project.state.current_stage or "created" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty-state">No projects yet. <a href="/projects/new">Create one.</a></p>
+  {% endif %}
+</div>
 {% endblock %}

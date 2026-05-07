@@ -1,0 +1,555 @@
+/* =============================================
+   Script Goblin — Stylesheet
+   ============================================= */
+
+:root {
+  --app-bg: #1e1e1e;
+  --nav-bg: #111;
+  --paper: #f9f9f7;
+  --ink: #111;
+  --accent: #b8954a;
+  --muted: #888;
+  --danger: #8b2020;
+  --script-font: 'Courier New', Courier, monospace;
+  --ui-font: Georgia, 'Times New Roman', serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  background: var(--app-bg);
+  color: #d8d8d8;
+  font-family: var(--ui-font);
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+/* =============================================
+   Navigation
+   ============================================= */
+
+nav {
+  background: var(--nav-bg);
+  border-bottom: 1px solid #2a2a2a;
+  padding: 0.7em 2em;
+  font-family: var(--script-font);
+  display: flex;
+  align-items: center;
+  gap: 2em;
+}
+
+.nav-brand {
+  color: var(--accent);
+  font-size: 11pt;
+  font-weight: bold;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-right: 0.5em;
+}
+
+nav a {
+  color: var(--muted);
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+nav a:hover { color: var(--accent); text-decoration: none; }
+
+main { padding: 2.5em 0 4em; }
+
+/* =============================================
+   Paper Page
+   ============================================= */
+
+.page {
+  background: var(--paper);
+  color: var(--ink);
+  width: 8.5in;
+  max-width: 98vw;
+  min-height: 11in;
+  margin: 0 auto 2.5em;
+  box-shadow: 0 6px 40px rgba(0,0,0,0.55);
+  padding: 1in 1.25in 1in 1.5in;
+  position: relative;
+}
+
+/* =============================================
+   Title Page (project detail view)
+   ============================================= */
+
+.title-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 11in;
+  padding: 1in 1.25in 1in 1.5in;
+  font-family: var(--script-font);
+}
+
+.title-page__top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 1.5in;
+  text-align: center;
+}
+
+.title-page__title {
+  font-size: 24pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6em;
+}
+
+.title-page__byline {
+  font-size: 12pt;
+  color: #444;
+  line-height: 1.6;
+}
+
+.title-page__meta {
+  font-size: 10pt;
+  color: #666;
+  margin-top: 0.8em;
+  letter-spacing: 0.04em;
+}
+
+.title-page__status {
+  margin-top: 2em;
+  font-size: 9.5pt;
+  color: #555;
+  text-align: center;
+  line-height: 1.8;
+}
+
+.title-page__actions {
+  margin-top: 2em;
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.title-page__bottom {
+  margin-top: auto;
+  font-size: 9.5pt;
+  color: #666;
+  line-height: 1.8;
+}
+
+/* =============================================
+   Buttons
+   ============================================= */
+
+button, .btn {
+  font-family: var(--script-font);
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 0.45em 1.4em;
+  border: 1px solid #555;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  display: inline-block;
+}
+
+button:hover, .btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+  text-decoration: none;
+}
+
+button.danger { border-color: var(--danger); color: var(--danger); }
+button.danger:hover { background: var(--danger); color: #fff; }
+
+/* =============================================
+   New Project Form (title page style)
+   ============================================= */
+
+.title-page-form {
+  display: flex;
+  flex-direction: column;
+  min-height: 11in;
+  font-family: var(--script-font);
+}
+
+.title-page-form__top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 1.8in;
+  text-align: center;
+}
+
+.form-label {
+  display: block;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #888;
+  margin-bottom: 0.3em;
+}
+
+.title-input {
+  font-family: var(--script-font);
+  font-size: 22pt;
+  font-weight: bold;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border: none;
+  border-bottom: 1px solid #bbb;
+  background: transparent;
+  width: 80%;
+  outline: none;
+  color: var(--ink);
+  padding: 0.1em 0;
+}
+
+.title-page-form__byline {
+  font-size: 12pt;
+  color: #555;
+  margin-top: 0.7em;
+  line-height: 1.7;
+}
+
+.form-row {
+  display: flex;
+  gap: 2.5em;
+  margin-top: 1.5em;
+  width: 80%;
+  justify-content: center;
+}
+
+.form-field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-field input[type="text"],
+.form-field input[type="number"],
+.form-field select {
+  font-family: var(--script-font);
+  font-size: 10pt;
+  border: none;
+  border-bottom: 1px solid #bbb;
+  background: transparent;
+  outline: none;
+  color: var(--ink);
+  padding: 0.2em 0;
+  width: 100%;
+}
+
+.title-page-form__bottom {
+  margin-top: auto;
+  padding-top: 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+.title-page-form__bottom textarea {
+  font-family: var(--script-font);
+  font-size: 10pt;
+  border: 1px solid #ccc;
+  background: transparent;
+  outline: none;
+  color: var(--ink);
+  padding: 0.4em;
+  width: 100%;
+  resize: vertical;
+}
+
+.title-page-form__bottom .form-label { margin-bottom: 0.25em; }
+
+.title-page-form__submit {
+  text-align: center;
+  margin-top: 1.5em;
+}
+
+.custom-runtime-field { display: none; }
+
+/* =============================================
+   Sequence Outline
+   ============================================= */
+
+.outline-header {
+  font-family: var(--script-font);
+  font-size: 11pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-align: center;
+  margin-bottom: 2em;
+  padding-bottom: 0.5em;
+  border-bottom: 1px solid #ccc;
+}
+
+.scene-card {
+  margin-bottom: 2em;
+  padding-bottom: 1.5em;
+  border-bottom: 1px dashed #ddd;
+  font-family: var(--script-font);
+}
+
+.scene-card:last-child { border-bottom: none; }
+
+.scene-card__heading {
+  font-size: 10.5pt;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.7em;
+}
+
+.scene-card__number {
+  font-size: 8.5pt;
+  color: #888;
+  margin-right: 0.4em;
+}
+
+.scene-card__row {
+  display: grid;
+  grid-template-columns: 115px 1fr;
+  gap: 0.15em 0.8em;
+  font-size: 9.5pt;
+  margin-bottom: 0.35em;
+  align-items: baseline;
+}
+
+.scene-card__label {
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #777;
+}
+
+.scene-card__beats {
+  margin: 0;
+  padding-left: 1em;
+}
+
+.scene-card__beats li {
+  font-size: 9.5pt;
+  margin-bottom: 0.15em;
+  list-style: disc;
+}
+
+/* =============================================
+   Screenplay Script Display
+   ============================================= */
+
+.screenplay-script {
+  font-family: var(--script-font);
+  font-size: 12pt;
+  line-height: 1.2;
+}
+
+.screenplay-script p { margin: 0; padding: 0; }
+.sp-blank { display: block; height: 0.6em; }
+
+.screenplay-script .scene-heading {
+  margin-top: 1.4em;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.screenplay-script .action {
+  margin-top: 0.6em;
+}
+
+.screenplay-script .character {
+  margin-top: 1em;
+  margin-left: 37%;
+  text-transform: uppercase;
+}
+
+.screenplay-script .parenthetical {
+  margin-left: 30%;
+  margin-right: 35%;
+}
+
+.screenplay-script .dialogue {
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+.screenplay-script .transition {
+  margin-top: 0.8em;
+  text-align: right;
+  text-transform: uppercase;
+}
+
+/* =============================================
+   Review Page (two-column)
+   ============================================= */
+
+.review-page {
+  min-height: 11in;
+  padding: 0;
+  overflow: hidden;
+}
+
+.review-layout {
+  display: grid;
+  grid-template-columns: 62% 38%;
+  min-height: 11in;
+}
+
+.review-script {
+  padding: 1in 0.75in 1in 1.5in;
+  border-right: 2px solid #e0e0e0;
+  overflow: auto;
+}
+
+.review-script .outline-header {
+  margin-bottom: 1.5em;
+}
+
+.review-notes {
+  padding: 1in 1in 1in 0.75in;
+  font-family: var(--script-font);
+  background: #faf9f6;
+}
+
+.review-notes h2 {
+  font-family: var(--script-font);
+  font-size: 8.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.35em;
+  margin: 1.5em 0 0.8em;
+  color: #555;
+}
+
+.review-notes h2:first-child { margin-top: 0; }
+
+.scene-note-block {
+  margin-bottom: 1em;
+}
+
+.scene-note-block label {
+  display: block;
+  font-size: 7.5pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #777;
+  margin-bottom: 0.25em;
+}
+
+.review-notes textarea {
+  font-family: var(--script-font);
+  font-size: 9.5pt;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.3em 0.4em;
+  resize: vertical;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+
+.review-notes textarea:focus { border-color: #999; }
+
+.review-submit {
+  margin-top: 1.5em;
+  text-align: right;
+}
+
+/* =============================================
+   Dashboard / Project List
+   ============================================= */
+
+.dashboard {
+  max-width: 8.5in;
+  margin: 0 auto;
+  padding: 2em 2.5em;
+  font-family: var(--script-font);
+}
+
+.dashboard h1 {
+  font-size: 10pt;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+  border-bottom: 1px solid #2d2d2d;
+  padding-bottom: 0.5em;
+  margin-bottom: 1.5em;
+}
+
+.project-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0.9em 0;
+  border-bottom: 1px solid #262626;
+}
+
+.project-list li a {
+  font-size: 13pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.project-list .project-meta {
+  font-size: 8.5pt;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.empty-state {
+  color: var(--muted);
+  font-size: 10.5pt;
+  font-style: italic;
+  padding: 2em 0;
+}
+
+/* =============================================
+   Ollama Status
+   ============================================= */
+
+.ollama-status {
+  font-family: var(--script-font);
+  font-size: 8.5pt;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 1.8em;
+  letter-spacing: 0.04em;
+}
+
+.ollama-status .dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ollama-status.online .dot   { background: #4a8b4a; }
+.ollama-status.offline .dot  { background: var(--danger); }
+.ollama-status.online .label { color: #6ab56a; }
+.ollama-status.offline .label{ color: #b56a6a; }
+
+.ollama-status .url  { color: var(--muted); }
+.ollama-status .hint { color: #444; font-size: 7.5pt; }

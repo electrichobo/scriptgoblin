@@ -2,5 +2,6 @@
 __pycache__/
 *.pyc
 .env
+.claude/
 scratch/temp_outputs/
 projects/*/exports/
