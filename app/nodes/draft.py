@@ -2,7 +2,9 @@ from pathlib import Path
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from app.config import WRITER_MODEL
 from app.llm.model_router import get_writer
+from app.services import run_logger
 from app.state.graph_state import ScreenplayState
 
 _PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
@@ -51,10 +53,12 @@ def draft_node(state: ScreenplayState) -> dict:
     if production_notes:
         human += f"\n\nProduction notes from previous draft — apply these throughout:\n{production_notes}"
 
-    print(f"[draft] generating for '{brief['title']}' ({runtime} min, {len(state['outline'].get('scenes', []))} scenes)...")
+    slug = state["slug"]
+    scene_count = len(state["outline"].get("scenes", []))
+    run_logger.log(slug, f"[draft] writing '{brief['title']}' ({runtime} min, {scene_count} scenes)...", phase="draft", model=WRITER_MODEL)
     llm = get_writer()
     response = llm.invoke([SystemMessage(content=system), HumanMessage(content=human)])
-    print(f"[draft] done — {len(response.content)} chars")
+    run_logger.log(slug, f"[draft] done — {len(response.content)} chars")
     return {
         "draft": response.content,
         "current_stage": "drafted",

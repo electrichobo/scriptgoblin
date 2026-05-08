@@ -2,7 +2,9 @@ from pathlib import Path
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from app.config import WRITER_MODEL
 from app.llm.model_router import get_writer
+from app.services import run_logger
 from app.state.graph_state import ScreenplayState
 
 _PROMPTS = Path(__file__).resolve().parents[1] / "prompts"
@@ -48,10 +50,11 @@ def rewrite_node(state: ScreenplayState) -> dict:
             "verbatim from the current draft. Do not alter a single word."
         )
 
-    print(f"[rewrite] rewriting draft (story_loops={loops})...")
+    slug = state["slug"]
+    run_logger.log(slug, f"[rewrite] rewriting draft (story_loops={loops})...", phase="rewrite", model=WRITER_MODEL)
     llm = get_writer()
     response = llm.invoke([SystemMessage(content=system), HumanMessage(content=human)])
-    print(f"[rewrite] done — {len(response.content)} chars")
+    run_logger.log(slug, f"[rewrite] done — {len(response.content)} chars")
 
     return {
         "draft": response.content,

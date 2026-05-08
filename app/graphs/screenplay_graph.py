@@ -2,7 +2,9 @@ from langgraph.graph import END, StateGraph
 
 from app.nodes.draft import draft_node
 from app.nodes.outline import outline_node
+from app.nodes.outline_sync import outline_sync_node
 from app.nodes.rewrite import rewrite_node
+from app.nodes.scene_tag import scene_tag_node
 from app.nodes.story_eval import story_eval_node
 from app.state.graph_state import ScreenplayState
 
@@ -18,17 +20,21 @@ def build_graph():
 
     builder.add_node("outline", outline_node)
     builder.add_node("draft", draft_node)
+    builder.add_node("tagger", scene_tag_node)
     builder.add_node("story_eval", story_eval_node)
     builder.add_node("rewrite", rewrite_node)
+    builder.add_node("outline_sync", outline_sync_node)
 
     builder.set_entry_point("outline")
     builder.add_edge("outline", "draft")
-    builder.add_edge("draft", "story_eval")
+    builder.add_edge("draft", "tagger")
+    builder.add_edge("tagger", "story_eval")
     builder.add_conditional_edges(
         "story_eval",
         _route_after_eval,
         {"rewrite": "rewrite", END: END},
     )
-    builder.add_edge("rewrite", "story_eval")
+    builder.add_edge("rewrite", "outline_sync")
+    builder.add_edge("outline_sync", "tagger")
 
     return builder.compile()

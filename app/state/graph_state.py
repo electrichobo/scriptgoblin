@@ -9,6 +9,7 @@ class ScreenplayState(TypedDict):
     outline: dict       # ScreenplayOutline.model_dump() — {scenes: [...]}
     draft: str
     eval_result: dict   # StoryEval.model_dump() — populated after each story_eval run
+    scene_tags: dict    # SceneTags.model_dump() — populated after each tagger run
     human_notes: dict   # {overall_notes: str} — saved production notes, fed back into generation
     current_stage: str
     story_loops: int

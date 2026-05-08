@@ -2,8 +2,10 @@ from pathlib import Path
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
+from app.config import WRITER_MODEL
 from app.llm.model_router import get_writer
 from app.llm.structured_output import parse_structured
+from app.services import run_logger
 from app.state.graph_state import ScreenplayState
 from app.state.models import ScreenplayOutline
 
@@ -44,12 +46,13 @@ def outline_node(state: ScreenplayState) -> dict:
     if production_notes:
         human += f"\n\nProduction notes from previous draft — incorporate these into the new outline:\n{production_notes}"
 
-    print(f"[outline] generating for '{brief['title']}' ({runtime} min)...")
+    slug = state["slug"]
+    run_logger.log(slug, f"[outline] generating for '{brief['title']}' ({runtime} min)...", phase="outline", model=WRITER_MODEL)
     llm = get_writer()
     result = parse_structured(
         llm,
         ScreenplayOutline,
         [SystemMessage(content=system), HumanMessage(content=human)],
     )
-    print(f"[outline] done — {len(result.scenes)} scenes")
+    run_logger.log(slug, f"[outline] done — {len(result.scenes)} scenes")
     return {"outline": result.model_dump(), "current_stage": "outlined"}

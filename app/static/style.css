@@ -349,6 +349,139 @@ button.danger:hover { background: var(--danger); color: #fff; }
 }
 
 /* =============================================
+   Inline Generation Status (inside title page)
+   ============================================= */
+
+.run-status-inline {
+  margin: 1.8em auto 0;
+  max-width: 5.5in;
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
+  font-family: var(--script-font);
+}
+
+.run-status-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.45em 2em;
+  font-size: 9pt;
+  margin-bottom: 0.75em;
+  text-align: left;
+}
+
+.run-status-cell {
+  display: flex;
+  gap: 0.55em;
+  align-items: baseline;
+}
+
+.run-status-label {
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #999;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.run-status-value { color: #333; font-size: 9pt; }
+
+.status-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  margin-right: 0.3em;
+  vertical-align: middle;
+  animation: sg-pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes sg-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.25; }
+}
+
+.status-log {
+  font-family: var(--script-font);
+  font-size: 8pt;
+  background: #111;
+  color: #b8b8b8;
+  border: 1px solid #2a2a2a;
+  padding: 0.6em 0.8em;
+  min-height: 5em;
+  max-height: 14em;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.run-status-error .status-dot { background: var(--danger); animation: none; }
+.run-status-error .status-log { border-color: var(--danger); }
+
+/* =============================================
+   Story Evaluation Block
+   ============================================= */
+
+.eval-page {
+  min-height: auto;
+  padding: 1.5in 1.5in 1in;
+  text-align: center;
+}
+
+.eval-score {
+  font-family: var(--script-font);
+  font-size: 52pt;
+  font-weight: bold;
+  color: var(--ink);
+  line-height: 1;
+  margin: 0.2em 0 0.5em;
+}
+
+.eval-score__denom {
+  font-size: 20pt;
+  color: #888;
+}
+
+.eval-feedback {
+  font-family: var(--script-font);
+  font-size: 10pt;
+  color: #333;
+  line-height: 1.7;
+  max-width: 5in;
+  margin: 0 auto 1.2em;
+  text-align: left;
+}
+
+.eval-notes {
+  font-family: var(--script-font);
+  font-size: 9.5pt;
+  color: #444;
+  padding-left: 1.2em;
+  line-height: 1.9;
+  text-align: left;
+  max-width: 5in;
+  margin: 0 auto;
+}
+
+.eval-notes li { margin-bottom: 0.2em; }
+
+/* Scene function tag (on outline cards) */
+.scene-function-tag {
+  display: inline-block;
+  font-size: 7pt;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 0.15em 0.55em;
+  margin-left: 0.6em;
+  vertical-align: middle;
+}
+
+/* =============================================
    Screenplay Script Display
    ============================================= */
 
@@ -496,6 +629,11 @@ button.danger:hover { background: var(--danger); color: #fff; }
 .review-submit {
   margin-top: 1.5em;
   text-align: right;
+}
+
+.review-submit--top {
+  margin-top: 0;
+  margin-bottom: 1.5em;
 }
 
 /* =============================================

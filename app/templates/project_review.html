@@ -23,6 +23,10 @@
       <!-- Notes column -->
       <div class="review-notes">
 
+        <div class="review-submit review-submit--top">
+          <button type="submit">Submit Notes for Revision</button>
+        </div>
+
         <h2>Overall Notes</h2>
         <div class="scene-note-block">
           <textarea name="overall_notes" rows="7">{{ project.notes.overall_notes or "" }}</textarea>
@@ -43,10 +47,6 @@
             </div>
           {% endfor %}
         {% endif %}
-
-        <div class="review-submit">
-          <button type="submit">Save Notes</button>
-        </div>
 
       </div>
     </div>

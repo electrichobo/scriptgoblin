@@ -1,9 +1,11 @@
+import threading
 from pathlib import Path
 
 from fastapi import APIRouter, Form, HTTPException, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, JSONResponse, RedirectResponse
 from fastapi.templating import Jinja2Templates
 
+from app.services import run_logger
 from app.services.project_store import (
     FORMAT_PRESETS,
     create_project,
@@ -81,22 +83,21 @@ def project_detail(request: Request, slug: str):
     if project is None:
         raise HTTPException(status_code=404, detail="Project not found")
     outputs = get_latest_outputs(slug)
+    scene_tags_by_number = {
+        tag["scene_number"]: tag
+        for tag in outputs.get("scene_tags", {}).get("scenes", [])
+    }
     return templates.TemplateResponse(
         request=request,
         name="project_detail.html",
-        context={"project": project, "outputs": outputs},
+        context={"project": project, "outputs": outputs, "scene_tags_by_number": scene_tags_by_number},
     )
 
 
-@router.post("/projects/{slug}/run")
-def run_project(slug: str):
+def _invoke_graph(slug: str):
     from app.graphs.screenplay_graph import build_graph
 
     project = get_project(slug)
-    if project is None:
-        raise HTTPException(status_code=404, detail="Project not found")
-
-    update_run_state(slug, {"status": "running"})
     try:
         graph = build_graph()
         result = graph.invoke({
@@ -105,6 +106,7 @@ def run_project(slug: str):
             "outline": {},
             "draft": "",
             "eval_result": {},
+            "scene_tags": {},
             "human_notes": project["notes"],
             "current_stage": "running",
             "story_loops": project["run_state"].get("story_loops", 0),
@@ -115,13 +117,35 @@ def run_project(slug: str):
             slug=slug,
             outline=result["outline"],
             draft=result["draft"],
+            eval_result=result.get("eval_result"),
+            scene_tags=result.get("scene_tags"),
             story_loops=result["story_loops"],
         )
+        run_logger.done(slug)
     except Exception as e:
         update_run_state(slug, {"status": "error"})
-        raise HTTPException(status_code=500, detail=str(e))
+        run_logger.error(slug, str(e))
 
+
+def _start_run(slug: str):
+    update_run_state(slug, {"status": "running"})
+    run_logger.start(slug)
+    thread = threading.Thread(target=_invoke_graph, args=(slug,), daemon=True)
+    thread.start()
+
+
+@router.post("/projects/{slug}/run")
+def run_project(slug: str):
+    project = get_project(slug)
+    if project is None:
+        raise HTTPException(status_code=404, detail="Project not found")
+    _start_run(slug)
     return RedirectResponse(url=f"/projects/{slug}", status_code=303)
+
+
+@router.get("/projects/{slug}/status")
+def project_status(slug: str):
+    return JSONResponse(content=run_logger.get_status(slug))
 
 
 @router.get("/projects/{slug}/review", response_class=HTMLResponse)
@@ -168,6 +192,7 @@ async def review_submit(request: Request, slug: str):
     scene_notes.sort(key=lambda x: x["scene_number"])
 
     save_human_notes(slug, {"overall_notes": overall_notes, "scene_notes": scene_notes})
+    _start_run(slug)
     return RedirectResponse(url=f"/projects/{slug}", status_code=303)
 
 

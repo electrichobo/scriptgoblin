@@ -14,6 +14,29 @@
     </div>
   </div>
 
+  <!-- Generation status — shown by JS when a run is active -->
+  <div id="run-status" class="run-status-inline" style="display:none">
+    <div class="run-status-grid">
+      <div class="run-status-cell">
+        <span class="run-status-label">Phase</span>
+        <span class="run-status-value"><span class="status-dot"></span><span id="sp-phase-text">Starting…</span></span>
+      </div>
+      <div class="run-status-cell">
+        <span class="run-status-label">Model</span>
+        <span class="run-status-value" id="sp-model">—</span>
+      </div>
+      <div class="run-status-cell">
+        <span class="run-status-label">Elapsed</span>
+        <span class="run-status-value" id="sp-elapsed">—</span>
+      </div>
+      <div class="run-status-cell">
+        <span class="run-status-label">ETA</span>
+        <span class="run-status-value" id="sp-eta">—</span>
+      </div>
+    </div>
+    <pre class="status-log" id="sp-log"></pre>
+  </div>
+
   <div class="title-page__status">
     <div>Stage: {{ project.run_state.current_stage }}</div>
     <div>Story Loops: {{ project.run_state.story_loops }}</div>
@@ -28,7 +51,7 @@
   <div class="title-page__actions">
     <form method="post" action="/projects/{{ project.slug }}/run"
           onsubmit="this.querySelector('button').disabled=true; this.querySelector('button').textContent='Generating…'">
-      <button type="submit">{% if project.run_state.current_stage in ['drafted', 'evaluated', 'rewritten'] %}Generate Revision with Notes{% else %}Generate Draft{% endif %}</button>
+      <button type="submit">Generate Draft</button>
     </form>
     <a href="/projects/{{ project.slug }}/review" class="btn">Production Notes</a>
     <form method="post" action="/projects/{{ project.slug }}/delete"
@@ -47,16 +70,48 @@
 
 </div>
 
+<!-- Evaluation -->
+{% if outputs.eval_result and outputs.eval_result.score %}
+<div class="page eval-page">
+  <div class="outline-header">Story Evaluation</div>
+  <div class="eval-score">{{ outputs.eval_result.score }}<span class="eval-score__denom">/10</span></div>
+  <p class="eval-feedback">{{ outputs.eval_result.feedback }}</p>
+  {% if outputs.eval_result.notes %}
+  <ul class="eval-notes">
+    {% for note in outputs.eval_result.notes %}
+    <li>{{ note }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endif %}
+
 <!-- Sequence Outline -->
 {% if outputs.outline and outputs.outline.scenes %}
 <div class="page">
   <div class="outline-header">Sequence Outline</div>
   {% for scene in outputs.outline.scenes %}
+  {% set tag = scene_tags_by_number.get(scene.number, {}) %}
   <div class="scene-card">
     <div class="scene-card__heading">
       <span class="scene-card__number">{{ scene.number }}.</span>
       {{ scene.location }} &mdash; {{ scene.time_of_day }}
+      {% if tag.get('story_function') %}
+      <span class="scene-function-tag">{{ tag.story_function }}</span>
+      {% endif %}
     </div>
+    {% if tag.get('characters') %}
+    <div class="scene-card__row">
+      <span class="scene-card__label">Characters</span>
+      <span>{{ tag.characters | join(', ') }}</span>
+    </div>
+    {% endif %}
+    {% if tag.get('summary') %}
+    <div class="scene-card__row">
+      <span class="scene-card__label">Summary</span>
+      <span>{{ tag.summary }}</span>
+    </div>
+    {% endif %}
     <div class="scene-card__row">
       <span class="scene-card__label">Purpose</span>
       <span>{{ scene.purpose }}</span>
@@ -92,5 +147,111 @@
   </div>
 </div>
 {% endif %}
+
+<script>
+(function () {
+  const slug = {{ project.slug | tojson }};
+  const runStatusEl = document.getElementById('run-status');
+  const phaseText   = document.getElementById('sp-phase-text');
+  const modelEl     = document.getElementById('sp-model');
+  const elapsedEl   = document.getElementById('sp-elapsed');
+  const etaEl       = document.getElementById('sp-eta');
+  const logEl       = document.getElementById('sp-log');
+
+  const PHASE_LABELS = {
+    starting: 'Starting…', outline: 'Generating Outline', draft: 'Writing Draft',
+    tagger: 'Tagging Scenes', story_eval: 'Evaluating Story',
+    rewrite: 'Rewriting Draft', outline_sync: 'Syncing Outline',
+    complete: 'Complete', error: 'Error',
+  };
+  const PHASE_DURATIONS = {
+    outline: 60, draft: 300, tagger: 60, story_eval: 45, rewrite: 300, outline_sync: 60,
+  };
+
+  // Whether the server considers this project mid-run on page load.
+  // Controls whether we start polling and show the panel initially.
+  // Does NOT control whether we reload — only observing 'running' from the
+  // poll itself sets hasSeenRunning, which is the reload gate.
+  const serverSaysRunning = {{ 'true' if project.run_state.status == 'running' else 'false' }};
+  let hasSeenRunning = false;
+  let phaseStartedAt = null;
+  let currentPhaseKey = null;
+  let pollId = null;
+  let tickId = null;
+
+  if (serverSaysRunning) {
+    runStatusEl.style.display = 'block';
+  }
+
+  function fmtSeconds(s) {
+    s = Math.round(s);
+    if (s < 0) return '—';
+    const m = Math.floor(s / 60), sec = s % 60;
+    return m > 0 ? m + 'm ' + sec + 's' : sec + 's';
+  }
+
+  function elapsedSecs(iso) {
+    return iso ? (Date.now() - new Date(iso).getTime()) / 1000 : null;
+  }
+
+  function tick() {
+    const e = elapsedSecs(phaseStartedAt);
+    if (e === null) return;
+    elapsedEl.textContent = fmtSeconds(e);
+    const dur = PHASE_DURATIONS[currentPhaseKey] || null;
+    etaEl.textContent = dur ? (dur - e > 5 ? '~' + fmtSeconds(dur - e) : 'finishing…') : '—';
+  }
+
+  function stopPolling() { clearInterval(pollId); clearInterval(tickId); }
+
+  async function poll() {
+    try {
+      const res = await fetch('/projects/' + slug + '/status');
+      if (!res.ok) return;
+      const data = await res.json();
+
+      if (data.status === 'running') {
+        hasSeenRunning = true;
+        runStatusEl.style.display = 'block';
+        currentPhaseKey = data.phase;
+        phaseText.textContent = PHASE_LABELS[data.phase] || data.phase || '—';
+        modelEl.textContent   = data.model || '—';
+        phaseStartedAt        = data.phase_started_at || null;
+        tick();
+        if (data.log && data.log.length) {
+          logEl.textContent = data.log.join('\n');
+          logEl.scrollTop = logEl.scrollHeight;
+        }
+      } else if (data.status === 'idle') {
+        if (hasSeenRunning) {
+          // We watched the run happen — safe to reload and show outputs.
+          stopPolling();
+          window.location.reload();
+        } else if (!serverSaysRunning) {
+          // Nothing was ever running on this page load — stop quietly.
+          stopPolling();
+        }
+        // else: server says running but log not yet reflecting it (race/write lag).
+        // Keep polling — the first node log entry will flip status to 'running'.
+      } else if (data.status === 'error') {
+        stopPolling();
+        runStatusEl.style.display = 'block';
+        runStatusEl.classList.add('run-status-error');
+        phaseText.textContent = 'Error — check server log';
+        if (data.log && data.log.length) {
+          logEl.textContent = data.log.join('\n');
+          logEl.scrollTop = logEl.scrollHeight;
+        }
+      }
+    } catch (_) { /* network blip — keep polling */ }
+  }
+
+  if (serverSaysRunning) {
+    poll();
+    pollId = setInterval(poll, 2000);
+    tickId = setInterval(tick, 1000);
+  }
+})();
+</script>
 
 {% endblock %}

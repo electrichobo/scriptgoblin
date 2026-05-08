@@ -28,6 +28,7 @@ class SceneTag(BaseModel):
     time_of_day: str
     characters: list[str]
     summary: str
+    story_function: str
 
 
 class SceneTags(BaseModel):

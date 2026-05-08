@@ -140,12 +140,27 @@ def update_run_state(slug: str, updates: dict):
     run_state_path.write_text(json.dumps(state, indent=2))
 
 
-def save_run_outputs(slug: str, outline: dict, draft: str, story_loops: int):
+def save_run_outputs(
+    slug: str,
+    outline: dict,
+    draft: str,
+    story_loops: int,
+    eval_result: dict | None = None,
+    scene_tags: dict | None = None,
+):
     root = PROJECTS_DIR / slug
     (root / "outlines" / f"outline_v{story_loops}.json").write_text(
         json.dumps(outline, indent=2)
     )
     (root / "drafts" / f"draft_v{story_loops}.txt").write_text(draft)
+    if eval_result:
+        (root / "evals" / f"eval_v{story_loops}.json").write_text(
+            json.dumps(eval_result, indent=2)
+        )
+    if scene_tags:
+        (root / "tags" / f"tags_v{story_loops}.json").write_text(
+            json.dumps(scene_tags, indent=2)
+        )
     update_run_state(slug, {
         "current_stage": "drafted",
         "story_loops": story_loops,
@@ -157,6 +172,8 @@ def get_latest_outputs(slug: str) -> dict:
     root = PROJECTS_DIR / slug
     outline = {}
     draft = ""
+    eval_result = {}
+    scene_tags = {}
 
     outlines_dir = root / "outlines"
     if outlines_dir.exists():
@@ -176,7 +193,25 @@ def get_latest_outputs(slug: str) -> dict:
         if files:
             draft = files[-1].read_text()
 
-    return {"outline": outline, "draft": draft}
+    evals_dir = root / "evals"
+    if evals_dir.exists():
+        files = sorted(
+            evals_dir.glob("eval_v*.json"),
+            key=lambda p: int(p.stem.split("v")[1]),
+        )
+        if files:
+            eval_result = json.loads(files[-1].read_text())
+
+    tags_dir = root / "tags"
+    if tags_dir.exists():
+        files = sorted(
+            tags_dir.glob("tags_v*.json"),
+            key=lambda p: int(p.stem.split("v")[1]),
+        )
+        if files:
+            scene_tags = json.loads(files[-1].read_text())
+
+    return {"outline": outline, "draft": draft, "eval_result": eval_result, "scene_tags": scene_tags}
 
 
 def delete_project(slug: str):
