@@ -1,0 +1,12 @@
+{
+  "score": 6,
+  "feedback": "The story has potential, but needs significant work in several areas.\n\n* **Structure:** The plot feels episodic and lacks a clear through-line. There's no overarching conflict or goal beyond fixing the immediate problem. Consider introducing a larger narrative context or raising the stakes for Ella and Marcus.\n\n* **Character:** Both Ella and Marcus are underdeveloped. We don't learn much about their motivations, backstories, or relationships beyond their professional interaction. Give them more depth and make their personalities distinct.\n\n* **Dialogue:** The dialogue is functional but lacks naturalism and subtext.  Pay attention to rhythm, word choice, and how characters reveal information through their conversations. Aim for a balance between exposition and showing.\n\n* **Pacing:** The pacing feels uneven. Too much time is spent on Ella debugging, which can be tedious without more engaging visuals or internal conflict. Consider tightening scenes and introducing moments of tension to keep the audience hooked.\n\n* **Theme:** The \"Ghost in the shell\" theme feels superficial. Explore the philosophical implications of technology and consciousness more deeply through character interactions and plot choices.\n\n",
+  "should_rewrite": true,
+  "notes": [
+    "Flesh out the central conflict beyond just a technical glitch.",
+    "Give Ella and Marcus distinct motivations, backstories, and relationships.",
+    "Use dialogue to reveal character traits and build tension, not just convey information.",
+    "Introduce plot twists or challenges that raise the stakes.",
+    "Explore the \"Ghost in the shell\" theme through meaningful character development and philosophical dilemmas."
+  ]
+}

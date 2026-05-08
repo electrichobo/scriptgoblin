@@ -20,14 +20,19 @@ def _route_start(state: ScreenplayState) -> str:
     return "outline"
 
 
-_MAX_STORY_LOOPS = 3
+_MAX_STORY_LOOPS = 2
 
 
 def _route_after_eval(state: ScreenplayState) -> str:
     eval_result = state.get("eval_result", {})
     score = eval_result.get("score", 10)
     loops = state.get("story_loops", 0)
-    if score < 8 and loops < _MAX_STORY_LOOPS:
+    best = state.get("best_score", 0)
+
+    if loops >= _MAX_STORY_LOOPS:
+        return END
+    if score < 8 and score >= best:
+        # still improving (or first eval) — rewrite
         return "rewrite"
     return END
 

@@ -14,4 +14,5 @@ class ScreenplayState(TypedDict):
     current_stage: str
     story_loops: int
     note_loops: int
+    best_score: int
     errors: Annotated[list[str], operator.add]

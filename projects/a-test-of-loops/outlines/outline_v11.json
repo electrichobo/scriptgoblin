@@ -1,0 +1,69 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella attempts to debug a system anomaly in the data center.",
+      "objective": "Ella wants to find the source of the feedback loop causing the system issue.",
+      "turning_point": "An urgent alert flashes, prompting Ella to investigate further.",
+      "beats": [
+        "Ella debugs code and monitors flashing screens.",
+        "A system anomaly alert appears.",
+        "Ella examines complex code and system logs."
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Marcus arrives and questions Ella's abilities.",
+      "objective": "Marcus wants to belittle Ella's efforts and assert his dominance.",
+      "turning_point": "Ella remains focused on the problem despite Marcus's skepticism.",
+      "beats": [
+        "Marcus observes Ella working.",
+        "He mocks Ella's skills.",
+        "Ella defends her work."
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella discovers a pattern in the system logs that suggests a solution.",
+      "objective": "Ella wants to find a clue about the feedback loop's origin.",
+      "turning_point": "Ella shares her observation with Marcus, leading to collaboration.",
+      "beats": [
+        "Ella analyzes system logs and finds a pattern.",
+        "She presents her findings to Marcus.",
+        "Marcus shows interest in collaborating."
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella and Marcus work together to solve the anomaly.",
+      "objective": "They want to improve data flow and optimize code segments.",
+      "turning_point": "Marcus's confidence is slowly eroded by Ella's competence.",
+      "beats": [
+        "Ella and Marcus analyze data streams.",
+        "They discuss their individual backgrounds and experiences.",
+        "Their collaboration strengthens."
+      ]
+    },
+    {
+      "number": 5,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella identifies the root cause of the anomaly and works with Marcus to fix it.",
+      "objective": "They want to resolve the feedback loop and restore system functionality.",
+      "turning_point": "Ella finds the faulty conditional statement, leading to a successful resolution.",
+      "beats": [
+        "Ella discovers the flawed code segment.",
+        "They refactor and optimize the code together.",
+        "The feedback loop is successfully eliminated."
+      ]
+    }
+  ]
+}

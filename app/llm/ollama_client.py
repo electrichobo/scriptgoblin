@@ -27,13 +27,16 @@ def _wait_for_unload(model: str, timeout: int = 90) -> None:
     # timed out — proceed anyway
 
 
-def get_client(model: str) -> ChatOllama:
+def get_client(model: str, num_ctx: int | None = None) -> ChatOllama:
     global _last_model
     if _last_model and _last_model != model:
         _wait_for_unload(_last_model)
         time.sleep(30)
     _last_model = model
-    return ChatOllama(model=model, base_url=OLLAMA_BASE_URL, keep_alive=0)
+    kwargs: dict = {"model": model, "base_url": OLLAMA_BASE_URL, "keep_alive": 0}
+    if num_ctx:
+        kwargs["num_ctx"] = num_ctx
+    return ChatOllama(**kwargs)
 
 
 def check_ollama() -> dict:

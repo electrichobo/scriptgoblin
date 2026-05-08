@@ -1,0 +1,90 @@
+A TEST OF LOOPS
+Web Series Episode
+Target Runtime: 9 minutes
+
+FADE IN:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella, focused in her early twenties, sits hunched over a workstation surrounded by screens flashing with code and data streams. Her fingers dance across the keyboard as she tries to debug an issue.
+
+ELLA
+(to herself)
+Come on... Where's this feedback loop originating from?
+
+Suddenly, one of her monitors flashes with an urgent alert.
+
+ELLA
+(startled)
+System anomaly detected!
+
+She leans in closer, examining the code displaying a complex matrix of interconnected loops and nodes. The screen flickers as she runs diagnostics and checks system logs, searching for clues to resolve the issue.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella continues her efforts to pinpoint and correct the anomalous feedback loop. She rewrites code snippets with increasing frustration. Marcus, a tall man in his mid-30s with an air of self-assuredness, enters, observing her from across the room.
+
+MARCUS
+You're still at it, Ella? Trying to play system administrator when you have no idea what you're doing?
+
+ELLA
+(firmly)
+Marcus, I'm just trying to resolve this issue. It's not personal.
+
+MARCUS
+(skeptical)
+Oh, sure. Just another innocent debugging session...
+
+Ella returns her focus to the problem at hand. She runs more tests and modifies code, determined to find a solution despite Marcus's skepticism.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+As Ella works, she notices an unusual pattern in the system logs indicating potential issues with data flow. She shares this observation with Marcus, hoping his expertise might shed light on the problem.
+
+MARCUS
+(intrigued)
+You've got something there, Ella. This could be a key part of the loop.
+
+ELLA
+(excited)
+Then let's investigate further! Maybe together we can crack this nut.
+
+Marcus nods, and they begin collaborating, combining their unique skills to tackle the feedback loop anomaly.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella and Marcus dive deeper into the system, analyzing data streams and optimizing code segments to improve flow and efficiency. As they work side by side, Marcus's confidence is slowly chipped away by Ella's persistence and innovative thinking.
+
+ELLA
+(intrigued)
+Marcus, what made you an expert in this field? It seems quite unrelated to your other interests...
+
+MARCUS
+(chuckles, revealing a hint of vulnerability)
+I used to dream about being an astronaut. But life took me down a different path - into finance and tech. Still waiting for my chance to explore the cosmos...
+
+Ella offers a sympathetic smile before turning back to their task.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+After hours of diligent effort, Ella finally spots the root cause of the anomaly - an inefficient conditional statement in one of the loops. With renewed energy and determination, they work together to refactor and optimize it.
+
+ELLA
+(triumphantly)
+We did it! The feedback loop is fixed!
+
+MARCUS
+(impressed)
+Not bad for a couple of amateurs. Looks like we make a decent team after all.
+
+As the data center's machinery hums back into harmony, Ella and Marcus share a moment of mutual respect and appreciation for their successful collaboration.
+
+FADE OUT.

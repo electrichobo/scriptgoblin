@@ -110,8 +110,9 @@ def _invoke_graph(slug: str):
             "scene_tags": {},
             "human_notes": project["notes"],
             "current_stage": "running",
-            "story_loops": project["run_state"].get("story_loops", 0),
-            "note_loops": project["run_state"].get("note_loops", 0),
+            "story_loops": 0,
+            "note_loops": 0,
+            "best_score": 0,
             "errors": [],
         })
         save_run_outputs(

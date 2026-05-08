@@ -2,8 +2,8 @@ from pathlib import Path
 
 from langchain_core.messages import HumanMessage, SystemMessage
 
-from app.config import VERIFIER_MODEL
-from app.llm.model_router import get_verifier
+from app.config import HEAVY_MODEL
+from app.llm.model_router import get_heavy
 from app.llm.structured_output import parse_structured
 from app.services import run_logger
 from app.state.graph_state import ScreenplayState
@@ -28,16 +28,18 @@ def story_eval_node(state: ScreenplayState) -> dict:
     )
 
     slug = state["slug"]
-    run_logger.log(slug, f"[eval] evaluating draft (story_loops={loops})...", phase="story_eval", model=VERIFIER_MODEL)
-    llm = get_verifier()
+    run_logger.log(slug, f"[eval] evaluating draft (story_loops={loops})...", phase="story_eval", model=HEAVY_MODEL)
+    llm = get_heavy()
     result = parse_structured(
         llm,
         StoryEval,
         [SystemMessage(content=system), HumanMessage(content=human)],
     )
-    run_logger.log(slug, f"[eval] score={result.score}, should_rewrite={result.should_rewrite}")
+    best = max(result.score, state.get("best_score", 0))
+    run_logger.log(slug, f"[eval] score={result.score}, best={best}, should_rewrite={result.should_rewrite}")
 
     return {
         "eval_result": result.model_dump(),
+        "best_score": best,
         "current_stage": "evaluated",
     }
