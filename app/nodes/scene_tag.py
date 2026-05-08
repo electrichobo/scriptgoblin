@@ -33,12 +33,15 @@ def scene_tag_node(state: ScreenplayState) -> dict:
 
     slug = state["slug"]
     run_logger.log(slug, f"[tagger] tagging {len(scenes)} scenes...", phase="tagger", model=TAGGER_MODEL)
-    llm = get_tagger()
-    result = parse_structured(
-        llm,
-        SceneTags,
-        [SystemMessage(content=system), HumanMessage(content=human)],
-    )
-    run_logger.log(slug, f"[tagger] done — {len(result.scenes)} scenes tagged")
-
-    return {"scene_tags": result.model_dump()}
+    try:
+        llm = get_tagger()
+        result = parse_structured(
+            llm,
+            SceneTags,
+            [SystemMessage(content=system), HumanMessage(content=human)],
+        )
+        run_logger.log(slug, f"[tagger] done — {len(result.scenes)} scenes tagged")
+        return {"scene_tags": result.model_dump()}
+    except Exception as e:
+        run_logger.log(slug, f"[tagger] parse failed ({e.__class__.__name__}) — skipping tags")
+        return {"scene_tags": {}}

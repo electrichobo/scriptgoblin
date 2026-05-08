@@ -27,8 +27,8 @@ class SceneTag(BaseModel):
     location: str
     time_of_day: str
     characters: list[str]
-    summary: str
-    story_function: str
+    summary: str = ""
+    story_function: str = "unknown"
 
 
 class SceneTags(BaseModel):
