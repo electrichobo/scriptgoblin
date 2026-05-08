@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduce Ella and establish the problem of a system anomaly.",
+      "objective": "Ella wants to debug the system anomaly causing feedback loops.",
+      "turning_point": "Ella discovers a ghostly figure within the data streams, hinting at a supernatural element.",
+      "beats": [
+        "Ella debugs code, struggling with a system anomaly.",
+        "An alert flashes, revealing complex interconnected loops.",
+        "A ghostly figure appears within the digital chaos."
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduce Marcus and his skeptical attitude towards Ella's work.",
+      "objective": "Ella wants to resolve the issue despite Marcus's doubts and interference.",
+      "turning_point": "The ghostly figure becomes more visible, but only Ella sees it.",
+      "beats": [
+        "Marcus enters, criticizing Ella's abilities.",
+        "Ella continues debugging, ignoring Marcus's taunts.",
+        "The ghost appears behind Ella, visible to her alone."
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella and Marcus collaborate to solve the anomaly.",
+      "objective": "Ella wants Marcus's help to fix the loop, leading to a potential partnership.",
+      "turning_point": "Ella convinces Marcus to work together, forming an alliance despite their differences.",
+      "beats": [
+        "Ella realizes she needs Marcus's expertise.",
+        "Marcus reluctantly agrees to assist Ella.",
+        "They begin collaborating on fixing the anomaly."
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Show Ella and Marcus successfully resolving the anomaly.",
+      "objective": "Ella and Marcus want to stabilize the system and eliminate the feedback loop.",
+      "turning_point": "The system stabilizes, demonstrating the success of their collaboration.",
+      "beats": [
+        "Ella and Marcus work together, combining their skills.",
+        "They finally resolve the feedback loop anomaly.",
+        "The data center returns to normal, signifying a successful outcome."
+      ]
+    }
+  ]
+}

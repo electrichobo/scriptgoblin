@@ -1,4 +1,4 @@
-from langgraph.graph import END, StateGraph
+from langgraph.graph import END, START, StateGraph
 
 from app.nodes.draft import draft_node
 from app.nodes.outline import outline_node
@@ -9,8 +9,25 @@ from app.nodes.story_eval import story_eval_node
 from app.state.graph_state import ScreenplayState
 
 
+def _route_start(state: ScreenplayState) -> str:
+    has_draft = bool(state.get("draft", "").strip())
+    notes = state.get("human_notes", {})
+    has_notes = bool(
+        notes.get("overall_notes", "").strip() or notes.get("scene_notes", [])
+    )
+    if has_draft and has_notes:
+        return "rewrite"
+    return "outline"
+
+
+_MAX_STORY_LOOPS = 3
+
+
 def _route_after_eval(state: ScreenplayState) -> str:
-    if state.get("eval_result", {}).get("should_rewrite", False):
+    eval_result = state.get("eval_result", {})
+    score = eval_result.get("score", 10)
+    loops = state.get("story_loops", 0)
+    if score < 8 and loops < _MAX_STORY_LOOPS:
         return "rewrite"
     return END
 
@@ -25,7 +42,7 @@ def build_graph():
     builder.add_node("rewrite", rewrite_node)
     builder.add_node("outline_sync", outline_sync_node)
 
-    builder.set_entry_point("outline")
+    builder.add_conditional_edges(START, _route_start, {"outline": "outline", "rewrite": "rewrite"})
     builder.add_edge("outline", "draft")
     builder.add_edge("draft", "tagger")
     builder.add_edge("tagger", "story_eval")

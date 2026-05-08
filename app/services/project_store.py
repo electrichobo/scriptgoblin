@@ -179,7 +179,7 @@ def get_latest_outputs(slug: str) -> dict:
     if outlines_dir.exists():
         files = sorted(
             outlines_dir.glob("outline_v*.json"),
-            key=lambda p: int(p.stem.split("v")[1]),
+            key=lambda p: int(p.stem.split("_v")[1]),
         )
         if files:
             outline = json.loads(files[-1].read_text())
@@ -188,7 +188,7 @@ def get_latest_outputs(slug: str) -> dict:
     if drafts_dir.exists():
         files = sorted(
             drafts_dir.glob("draft_v*.txt"),
-            key=lambda p: int(p.stem.split("v")[1]),
+            key=lambda p: int(p.stem.split("_v")[1]),
         )
         if files:
             draft = files[-1].read_text()
@@ -197,7 +197,7 @@ def get_latest_outputs(slug: str) -> dict:
     if evals_dir.exists():
         files = sorted(
             evals_dir.glob("eval_v*.json"),
-            key=lambda p: int(p.stem.split("v")[1]),
+            key=lambda p: int(p.stem.split("_v")[1]),
         )
         if files:
             eval_result = json.loads(files[-1].read_text())
@@ -206,7 +206,7 @@ def get_latest_outputs(slug: str) -> dict:
     if tags_dir.exists():
         files = sorted(
             tags_dir.glob("tags_v*.json"),
-            key=lambda p: int(p.stem.split("v")[1]),
+            key=lambda p: int(p.stem.split("_v")[1]),
         )
         if files:
             scene_tags = json.loads(files[-1].read_text())

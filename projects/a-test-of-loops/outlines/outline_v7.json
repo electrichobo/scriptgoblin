@@ -1,0 +1,69 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella tries to debug a system anomaly.",
+      "objective": "Find the source of the feedback loop causing the error.",
+      "turning_point": "A ghostly figure appears amidst the code, revealing a supernatural element to the problem.",
+      "beats": [
+        "Ella debugs a complex code matrix.",
+        "An urgent system alert flashes.",
+        "A ghostly image emerges from the digital chaos."
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella continues debugging, encountering frustration and the manifestation of the ghost.",
+      "objective": "Correct the feedback loop despite growing interference from the ghost.",
+      "turning_point": "The ghostly figure fully materializes behind Ella, revealing its identity and purpose.",
+      "beats": [
+        "Ella runs diagnostics and rewrites code.",
+        "The ghost appears more clearly behind her.",
+        "The ghost reveals itself as Tyrone's creation."
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella confronts the ghost, leading to a tense standoff with Marcus entering the scene.",
+      "objective": "Resolve the conflict and focus on fixing the system anomaly.",
+      "turning_point": "Marcus, another character, enters the data center, adding more complexity to the situation.",
+      "beats": [
+        "Ella argues with the ghost about responsibility.",
+        "Marcus enters the scene, observing the confrontation.",
+        "Tyrone and Marcus engage in a heated argument."
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella, Tyrone, and Marcus compete to solve the feedback loop.",
+      "objective": "Prove their competence and resolve the anomaly before it escalates further.",
+      "turning_point": "Ella realizes that collaboration is the key to solving the problem.",
+      "beats": [
+        "A hacking competition ensues between Ella, Tyrone, and Marcus.",
+        "The ghost observes the competition with interest.",
+        "Ella suggests working together instead of competing."
+      ]
+    },
+    {
+      "number": 5,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "The characters work together to solve the anomaly and stabilize the system.",
+      "objective": "Resolve the feedback loop by combining their unique skills and knowledge.",
+      "turning_point": "The characters achieve success through collaboration, resolving the anomaly and restoring harmony to the data center.",
+      "beats": [
+        "Ella, Tyrone, Marcus, and the ghost collaborate on a solution.",
+        "They work together to rewrite the code and fix the loop.",
+        "The system stabilizes, and the data center returns to normal operation."
+      ]
+    }
+  ]
+}

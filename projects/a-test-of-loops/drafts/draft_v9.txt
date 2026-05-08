@@ -1,0 +1,87 @@
+A TEST OF LOOPS
+Web Series Episode
+Target Runtime: 8 minutes
+
+FADE IN:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella, a focused young woman in her early twenties, sits hunched over a workstation surrounded by screens flashing with code and data streams. Her fingers dance across the keyboard as she tries to debug an issue.
+
+ELLA
+(to herself)
+Come on... Where's this feedback loop originating from?
+
+Suddenly, one of her monitors flashes with an urgent alert.
+
+ELLA
+(startled)
+System anomaly detected!
+
+She leans in closer, examining the code displaying a complex matrix of interconnected loops and nodes, pulsing with erratic energy. The screen flickers, and amidst the digital chaos, a faint image begins to take shape - a ghostly figure, translucent and distorted.
+
+ELLA
+(awestruck)
+What's... happening?
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella continues her efforts to pinpoint and correct the anomalous feedback loop. She runs diagnostics, checks system logs, and rewrites code snippets with increasing frustration. The ghostly figure remains elusive, only glimpsed in fleeting moments.
+
+MARCUS
+(entering)
+You're still at it, Ella? Trying to play system administrator when you have no idea what you're doing?
+
+ELLA
+(firmly)
+Marcus, I'm just trying to resolve this issue. It's not personal.
+
+MARCUS
+(skeptical)
+Oh, sure. Just another innocent debugging session...
+
+Ella returns her focus to the problem at hand, ignoring Marcus's insinuations. She continues running tests and modifying code, the ghostly presence still undetected by him.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+As Ella works, she senses the ghostly figure materializing behind her, now clearly visible amidst the data streams and pulsing energy. Marcus remains oblivious to its existence.
+
+ELLA
+(startled)
+Marcus, did you see that?
+
+MARCUS
+(coldly)
+See what? Just a glitch in your overactive imagination.
+
+Ella shakes her head, realizing Marcus doesn't perceive the ghost. She turns back to the screens, determined to find a solution despite the unsettling presence.
+
+Suddenly, Ella's eyes light up as she realizes something.
+
+ELLA
+(excited)
+Marcus, I think I've found it! We can use your expertise in system architecture to fix this loop!
+
+MARCUS
+(surprised)
+You want my help? After all your amateur meddling?
+
+ELLA
+(pleading)
+Please, Marcus. If we work together, we might actually resolve this.
+
+Marcus hesitates, then nods curtly.
+
+CUT TO:
+
+INT. DATA CENTER - NIGHT — NIGHT
+
+Ella and Marcus begin collaborating, combining their unique skills and insights to tackle the problem at hand. As they work together, the ghostly figure watches with keen interest, sensing an unexpected alliance forming.
+
+In time, with Ella's determination, Marcus's expertise, and a dash of innovative thinking, they succeed in resolving the feedback loop anomaly. The system stabilizes, and the data center's machinery hums in harmony once more.
+
+FADE OUT.

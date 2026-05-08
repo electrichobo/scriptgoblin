@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Meet System Admin JASON who deals with a mysterious feedback loop in his program.",
+      "objective": "Understand the problem Jason is facing and what he's trying to do about it.",
+      "turning_point": "Jason discovers the ghost in the shell causing chaos, escalating tension.",
+      "beats": [
+        "Jason gets alert",
+        "Feedback loop shown",
+        "Ghost revealed"
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Show Jason's attempts to debug and resolve the issue, with no success.",
+      "objective": "Jason wants to find a solution to fix his program.",
+      "turning_point": "Despite efforts, problem persists, increasing frustration.",
+      "beats": [
+        "Debugging shown",
+        "No progress made",
+        "Frustration builds"
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason is confronted by the program's creator, TYRONE, about his meddling.",
+      "objective": "Tyrone aims to expose Jason as an unauthorized user and regain control.",
+      "turning_point": "Confrontation escalates tensions between characters.",
+      "beats": [
+        "Tyrone appears",
+        "Accusations made",
+        "Hostilities rise"
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Jason and Tyrone engage in a competitive 'hacking' showdown to resolve the issue.",
+      "objective": "Each seeks to outmaneuver the other while fixing the program.",
+      "turning_point": "The two ultimately team up, realizing their common goal.",
+      "beats": [
+        "Hacking competition",
+        "Mutual discovery",
+        "Collaboration"
+      ]
+    }
+  ]
+}

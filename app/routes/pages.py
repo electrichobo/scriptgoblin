@@ -98,13 +98,14 @@ def _invoke_graph(slug: str):
     from app.graphs.screenplay_graph import build_graph
 
     project = get_project(slug)
+    existing = get_latest_outputs(slug)
     try:
         graph = build_graph()
         result = graph.invoke({
             "slug": slug,
             "brief": project["brief"],
-            "outline": {},
-            "draft": "",
+            "outline": existing.get("outline") or {},
+            "draft": existing.get("draft") or "",
             "eval_result": {},
             "scene_tags": {},
             "human_notes": project["notes"],

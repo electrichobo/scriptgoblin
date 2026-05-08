@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduces Ella and her struggle to debug a system anomaly.",
+      "objective": "Ella wants to identify the source of the feedback loop causing the system anomaly.",
+      "turning_point": "Ella notices an urgent alert about the system anomaly, prompting her to investigate further.",
+      "beats": [
+        "Ella is debugging code at her workstation.",
+        "One of her monitors flashes an urgent alert.",
+        "Ella investigates the code and system logs for clues."
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduces Marcus and his skepticism towards Ella's debugging efforts.",
+      "objective": "Ella wants to resolve the issue despite Marcus's doubt.",
+      "turning_point": "Marcus observes Ella's struggle, expressing skepticism about her abilities but ultimately remaining present.",
+      "beats": [
+        "Marcus enters the data center and witnesses Ella's work.",
+        "Marcus questions Ella's competence in debugging.",
+        "Ella remains focused and determined to solve the problem."
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella discovers a potential clue in the system logs and seeks Marcus's input.",
+      "objective": "Ella wants to share her findings with Marcus and collaborate on solving the issue.",
+      "turning_point": "Marcus acknowledges Ella's observation as potentially significant, leading to their collaboration.",
+      "beats": [
+        "Ella analyzes system logs and identifies an unusual pattern.",
+        "Ella shares her findings with Marcus.",
+        "Marcus expresses intrigue and suggests further investigation."
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella and Marcus collaborate to resolve the feedback loop anomaly.",
+      "objective": "Together, Ella and Marcus want to identify and fix the root cause of the anomaly.",
+      "turning_point": "Through teamwork and problem-solving, they successfully pinpoint and resolve the feedback loop issue.",
+      "beats": [
+        "Ella and Marcus analyze data streams and optimize code segments.",
+        "They work together to improve data flow and system efficiency.",
+        "They finally identify and fix the root cause of the anomaly."
+      ]
+    }
+  ]
+}

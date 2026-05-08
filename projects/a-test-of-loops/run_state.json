@@ -2,7 +2,7 @@
   "title": "A test of loops",
   "slug": "a-test-of-loops",
   "current_stage": "drafted",
-  "story_loops": 4,
+  "story_loops": 10,
   "note_loops": 0,
-  "status": "running"
+  "status": "idle"
 }

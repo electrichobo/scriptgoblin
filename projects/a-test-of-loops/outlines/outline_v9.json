@@ -1,0 +1,56 @@
+{
+  "scenes": [
+    {
+      "number": 1,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Introduce Ella and her struggle to debug a system anomaly.",
+      "objective": "Ella wants to find the source of the feedback loop causing the system anomaly.",
+      "turning_point": "A ghostly figure appears amidst the data streams, altering the nature of the problem.",
+      "beats": [
+        "Ella debugs code, searching for the loop's origin.",
+        "An alert triggers, revealing a complex matrix of interconnected loops and nodes.",
+        "A ghostly figure manifests within the digital chaos."
+      ]
+    },
+    {
+      "number": 2,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella continues her investigation despite Marcus's skepticism and the ghostly presence.",
+      "objective": "Ella aims to pinpoint and correct the anomalous feedback loop.",
+      "turning_point": "The ghostly figure becomes more visible, but Marcus remains unaware of its existence.",
+      "beats": [
+        "Ella runs diagnostics and checks system logs.",
+        "Marcus enters, questioning Ella's competence.",
+        "The ghostly figure appears briefly, only seen by Ella."
+      ]
+    },
+    {
+      "number": 3,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella realizes she needs Marcus's expertise to resolve the issue and seeks his collaboration.",
+      "objective": "Ella attempts to convince Marcus to help her fix the loop.",
+      "turning_point": "Marcus reluctantly agrees to assist Ella, marking a shift in their dynamic.",
+      "beats": [
+        "The ghostly figure is clearly visible to Ella.",
+        "Marcus dismisses Ella's claims of seeing a ghost.",
+        "Ella proposes using Marcus's skills to solve the problem."
+      ]
+    },
+    {
+      "number": 4,
+      "location": "INT. DATA CENTER - NIGHT",
+      "time_of_day": "NIGHT",
+      "purpose": "Ella and Marcus work together, leveraging their combined knowledge to overcome the anomaly.",
+      "objective": "Ella and Marcus aim to successfully resolve the feedback loop anomaly.",
+      "turning_point": "Through collaboration, they stabilize the system and eliminate the ghostly presence.",
+      "beats": [
+        "Ella and Marcus collaborate on fixing the loop.",
+        "The ghostly figure observes their teamwork with interest.",
+        "They successfully resolve the anomaly, restoring system harmony."
+      ]
+    }
+  ]
+}

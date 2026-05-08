@@ -1,0 +1,8 @@
+{
+  "score": 6,
+  "feedback": "The screenplay presents a clear premise within its limited runtime. The 'Ghost in the Shell' theme is established, but lacks depth. \n\n**Structure:** The plot follows a predictable arc, lacking significant twists or surprises. The pacing feels rushed, particularly in the transition between scenes.\n\n**Character:** Ella and Marcus are archetypal characters (the determined coder and the skeptical expert) with little to distinguish them. Their dialogue lacks personality and feels functional rather than engaging.\n\n**Dialogue:**  The dialogue is overly expository and tells rather than shows. It needs more natural flow and subtext.\n\n**Pacing:** The pacing is too fast, especially considering the short runtime. Scenes feel underdeveloped, leaving little room for character development or emotional resonance.\n\n**Theme:** The 'Ghost in the Shell' theme is present but not explored meaningfully.  The focus on technical details overshadows any deeper exploration of identity, consciousness, or humanity within a technological world.\n\n **should_rewrite**: false",
+  "should_rewrite": false,
+  "notes": [
+    "Develop the characters beyond archetypes. Give them unique traits, motivations, and backstories."
+  ]
+}
